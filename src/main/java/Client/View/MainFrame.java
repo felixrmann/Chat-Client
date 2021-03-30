@@ -15,6 +15,11 @@ public class MainFrame extends Application {
 
     Stage window;
 
+
+    /**
+     * starts the program
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
         init(primaryStage);
@@ -29,26 +34,48 @@ public class MainFrame extends Application {
         window.show();
     }
 
+    /**
+     * init method
+     * @param primaryStage
+     */
     public void init(Stage primaryStage){
         window = primaryStage;
 
         //TODO set first Scene
     }
 
+    /**
+     * updates the scene
+     * @param borderPane
+     * @param width
+     * @param height
+     */
     public void setNewScene(BorderPane borderPane, double width, double height){
         window.setScene(new Scene(borderPane, width, height));
         window.centerOnScreen();
     }
 
+    /**
+     * handles the closing of the program
+     */
     public void closeProgram(){
         boolean answer = ConfirmView.display("Exit", "Do you want to exit the program?");
         if (answer) window.close();
     }
 
+    /**
+     * method which returns the current stage
+     * @return the stage
+     */
     public Stage getStage(){
         return window;
     }
 
+    /**
+     * updates the size of the scene
+     * @param width
+     * @param height
+     */
     public void setSceneSize(double width, double height){
         window.setScene(new Scene(window.getScene().getRoot() , width, height));
     }

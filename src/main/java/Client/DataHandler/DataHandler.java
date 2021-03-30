@@ -24,11 +24,6 @@ import java.util.Vector;
 
 public class DataHandler {
 
-    public static void main(String[] args) {
-        DataHandler dataHandler = new DataHandler();
-        dataHandler.loadAllUsers();
-    }
-
     private final static Logger LOGGER = LoggerFactory.getLogger(DataHandler.class);
     private final static String fileName = "users.json";
     private final static String filePath = "src\\main\\resources\\" + fileName;
@@ -66,11 +61,10 @@ public class DataHandler {
 
         ArrayList<LoadUser> userArrayList = gson.fromJson(loadFileString(), userList);
 
-        for (int i = 0; i < userArrayList.size(); i++) {
-            System.out.println(userArrayList.get(i).getUserName());
-            System.out.println(userArrayList.get(i).getUserMail());
-            System.out.println(userArrayList.get(i).getUserPassword());
-            System.out.println(userArrayList.get(i).getUserToken());
+        if (userArrayList != null) {
+            for (LoadUser loadUser : userArrayList) {
+                allUsers.add(loadUser.convertToUser());
+            }
         }
 
         return allUsers;
