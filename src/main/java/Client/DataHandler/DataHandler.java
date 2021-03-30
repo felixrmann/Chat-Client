@@ -1,5 +1,6 @@
 package Client.DataHandler;
 
+import Client.Model.TestUser;
 import Client.Model.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -61,11 +62,13 @@ public class DataHandler {
         Gson gson = new Gson();
         Vector<User> allUsers = new Vector<>();
 
-        Type userList = new TypeToken<ArrayList<User>>(){}.getType();
+        Type userList = new TypeToken<ArrayList<TestUser>>(){}.getType();
 
-        ArrayList<User> userArrayList = gson.fromJson(loadFileString(), userList);
+        ArrayList<TestUser> userArrayList = gson.fromJson(loadFileString(), userList);
 
-        allUsers.addAll(userArrayList);
+        for (int i = 0; i < userArrayList.size(); i++) {
+            System.out.println(userArrayList.get(i).toString());
+        }
 
         return allUsers;
     }

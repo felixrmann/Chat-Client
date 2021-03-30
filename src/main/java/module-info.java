@@ -10,4 +10,7 @@ module Chat.Client {
     requires slf4j.api;
 
     opens Client.Main;
+    opens Client.Model;
+
+    exports Client.Model to com.google.gson;
 }
