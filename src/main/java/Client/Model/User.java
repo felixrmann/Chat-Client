@@ -12,16 +12,20 @@ import java.util.UUID;
 public class User {
 
     private String userUUID;
-    public String userName;
-    public String userMail;
-    public String userPassword;
+    private String userName;
+    private String userMail;
+    private String userPassword;
     private String userImagePath;
     private Activity userActivityState;
     private String userCustomState;
     private ZonedDateTime userCreatedAt;
-    public String userRefreshToken;
+    private String userToken;
 
     public User(){}
+    
+    public User(String userName, String userMail, String userPassword, String userToken){
+        
+    }
 
     public User(String userName, String userMail, String userPassword){
         this.userName = userName;
@@ -30,10 +34,10 @@ public class User {
 
         userUUID = UUID.randomUUID().toString();
         userCreatedAt = ZonedDateTime.parse(Long.toString(System.currentTimeMillis()));
-        userRefreshToken = UUID.randomUUID().toString();
+        userToken = UUID.randomUUID().toString();
     }
 
-    public User(String userUUID, String userName, String userMail, String userPassword, String userImagePath, String userActivityState, String userCustomState, String userCreatedAt, String userRefreshToken){
+    public User(String userUUID, String userName, String userMail, String userPassword, String userImagePath, String userActivityState, String userCustomState, String userCreatedAt, String userToken){
         this.userUUID = userUUID;
         this.userName = userName;
         this.userMail = userMail;
@@ -42,7 +46,7 @@ public class User {
         this.userActivityState = Activity.getActivity(Integer.parseInt(userActivityState));
         this.userCustomState = userCustomState;
         this.userCreatedAt = ZonedDateTime.parse(userCreatedAt);
-        this.userRefreshToken = userRefreshToken;
+        this.userToken = userToken;
     }
 
     public String getUserUUID() {
@@ -77,8 +81,8 @@ public class User {
         return userCreatedAt;
     }
 
-    public String getUserRefreshToken() {
-        return userRefreshToken;
+    public String getuserToken() {
+        return userToken;
     }
 
     public void setUserUUID(String userUUID) {
@@ -102,8 +106,9 @@ public class User {
     }
 
     public void setNewRefreshToken(){
-        userRefreshToken = "";
-        userRefreshToken = UUID.randomUUID().toString();
+        userToken = "";
+        userToken = UUID.randomUUID().toString();
+        //TODO wird von server geladen
     }
 
     public void setUserCustomState(String userCustomState) {
@@ -118,7 +123,7 @@ public class User {
         this.userCreatedAt = ZonedDateTime.parse(userCreatedAt);
     }
 
-    public void setUserRefreshToken(String userRefreshToken) {
-        this.userRefreshToken = userRefreshToken;
+    public void setuserToken(String userToken) {
+        this.userToken = userToken;
     }
 }
