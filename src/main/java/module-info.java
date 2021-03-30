@@ -7,6 +7,7 @@ module Chat.Client {
     requires org.json.chargebee;
     requires com.fasterxml.jackson.databind;
     requires com.google.gson;
+    requires slf4j.api;
 
     opens Client.Main;
 }

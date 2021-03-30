@@ -12,14 +12,14 @@ import java.util.UUID;
 public class User {
 
     private String userUUID;
-    private String userName;
-    private String userMail;
-    private String userPassword;
+    public String userName;
+    public String userMail;
+    public String userPassword;
     private String userImagePath;
     private Activity userActivityState;
     private String userCustomState;
     private ZonedDateTime userCreatedAt;
-    private String userRefreshToken;
+    public String userRefreshToken;
 
     public User(){}
 
