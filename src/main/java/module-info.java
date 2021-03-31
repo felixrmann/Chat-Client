@@ -13,4 +13,5 @@ module Chat.Client {
     opens Client.Model;
 
     exports Client.Model to com.google.gson;
+    exports Client.View to javafx.graphics;
 }

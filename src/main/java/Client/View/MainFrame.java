@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class MainFrame extends Application {
 
     Stage window;
-
+    Scene logInScene;
 
     /**
      * starts the program
@@ -30,7 +30,9 @@ public class MainFrame extends Application {
         });
         window.setResizable(false);
         //TODO title
+        window.setTitle("LogIn");
         //TODO first view
+        window.setScene(logInScene);
         window.show();
     }
 
@@ -42,6 +44,7 @@ public class MainFrame extends Application {
         window = primaryStage;
 
         //TODO set first Scene
+        logInScene = new Scene(new LoginView(this), 500, 400);
     }
 
     /**
