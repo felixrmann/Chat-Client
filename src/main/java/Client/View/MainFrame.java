@@ -44,7 +44,7 @@ public class MainFrame extends Application {
         window = primaryStage;
 
         //TODO set first Scene
-        logInScene = new Scene(new LoginView(this), 500, 400);
+        logInScene = new Scene(new LoginView(this), 720, 400);
     }
 
     /**
