@@ -1,12 +1,15 @@
 package Client.View;
 
 import Client.Controller.LoginController;
+import Client.DataHandler.ConfigLoader;
+import Client.Model.Config;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
 import java.util.Vector;
@@ -25,6 +28,7 @@ public class LoginView extends BorderPane {
     private Vector<Button> buttons;
     private Button signUpButton, createAccountButton, forgotPasswordButton;
     private final String fontPath = "file:src\\main\\resources\\Segoe_UI.ttf";
+    private final Config config = ConfigLoader.loadConfig();
 
     public LoginView(MainFrame mainFrame){
         this.mainFrame = mainFrame;
@@ -50,9 +54,6 @@ public class LoginView extends BorderPane {
     }
 
     private void createGridPane() {
-        //mainGridPane.setStyle("-fx-border-color: black; -fx-background-color: white");
-        //mainGridPane.setStyle("-fx-background-image: url('themes/dark.png'); -fx-background-repeat: stretch; -fx-background-size: 720 400; -fx-background-position: center center");
-
         setLoginPane();
         setRegisterPane();
     }
@@ -72,7 +73,7 @@ public class LoginView extends BorderPane {
 
         loginLabel.setText("Login");
         loginLabel.setFont(new Font("Arial", 27));
-        loginLabel.setStyle("-fx-text-fill: LighxtGray");
+        setColor(loginLabel);
         loginLabel.setPadding(new Insets(0,0,40,0));
         loginPane.setTop(loginLabel);
 
@@ -82,26 +83,34 @@ public class LoginView extends BorderPane {
 
         userNameLabel.setText("Username / Mail");
         userNameLabel.setFont(new Font("Arial", 14));
-        userNameLabel.setTextFill(Color.web("616161"));
+        setColor(userNameLabel);
         userNameLabel.setPadding(new Insets(15,0,5,0));
         userInputPane.add(userNameLabel, 0,0);
 
         userNameTextField.setPrefWidth(320);
         userNameTextField.setPrefHeight(35);
         userNameTextField.setFont(new Font("Arial", 20));
-        userNameTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: D3D3D3; -fx-text-inner-color: Silver");
+        if (config.getMode().equals("dark")){
+            userNameTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: D3D3D3; -fx-text-inner-color: DarkGrey");
+        } else {
+            userNameTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: D3D3D3; -fx-text-inner-color: Black");
+        }
         userInputPane.add(userNameTextField, 0,1);
 
         passwordLabel.setText("Password");
         passwordLabel.setFont(new Font("Arial", 14));
-        passwordLabel.setTextFill(Color.web("616161"));
+        setColor(passwordLabel);
         passwordLabel.setPadding(new Insets(15,0,5,0));
         userInputPane.add(passwordLabel, 0,2);
 
         passwordTextField.setPrefWidth(320);
         passwordTextField.setPrefHeight(35);
         passwordTextField.setFont(new Font("Arial", 20));
-        passwordTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: D3D3D3; -fx-text-inner-color: Silver");
+        if (config.getMode().equals("dark")){
+            passwordTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: D3D3D3; -fx-text-inner-color: DarkGrey");
+        } else {
+            passwordTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: D3D3D3; -fx-text-inner-color: Black");
+        }
         userInputPane.add(passwordTextField, 0,3);
 
         forgotPasswordButton.setText("I forgot my password");
@@ -110,7 +119,6 @@ public class LoginView extends BorderPane {
         userInputPane.add(forgotPasswordButton, 0,4);
 
         signUpButton.setText("Sign In");
-        //signUpButton.setStyle("-fx-border-color: D3D3D3; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: White");
         signUpButton.setMinHeight(35);
         signUpButton.setPrefHeight(35);
         signUpButton.setMaxHeight(35);
@@ -134,8 +142,6 @@ public class LoginView extends BorderPane {
         registerPane.setPadding(new Insets(30,30,30,30));
         mainGridPane.add(registerPane, 1,0);
 
-        createAccountButton.setText("Create New Account");
-
         Label registerLabel = new Label();
         Label label1 = new Label();
         Label label2 = new Label();
@@ -158,6 +164,15 @@ public class LoginView extends BorderPane {
         label4.setText("Create group chats and chat with many friends");
         registerInfoPane.add(label4, 0,3);
 
+        createAccountButton.setText("Create New Account");
         registerPane.setBottom(createAccountButton);
+    }
+
+    private void setColor(Node node){
+        if (config.getMode().equals("dark")){
+            node.setStyle("-fx-text-fill: LightGray");
+        } else {
+            node.setStyle("-fx-text-fill: Black");
+        }
     }
 }

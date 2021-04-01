@@ -22,9 +22,9 @@ import java.util.Vector;
  * @since 2021-Februar-27
  */
 
-public class DataHandler {
+public class UserLoader {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(DataHandler.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(UserLoader.class);
     private final static String fileName = "users.json";
     private final static String filePath = "src\\main\\resources\\" + fileName;
 
@@ -32,7 +32,7 @@ public class DataHandler {
      constructor
      searches for File and if it doesn't exist create the file
      */
-    private DataHandler() {
+    private UserLoader() {
         try {
             File userFile = new File(filePath);
             if (!userFile.exists()) {
@@ -82,5 +82,4 @@ public class DataHandler {
         }
         return null;
     }
-
 }

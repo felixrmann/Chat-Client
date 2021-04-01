@@ -1,5 +1,6 @@
 package Client.View;
 
+import Client.DataHandler.ConfigLoader;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -45,7 +46,7 @@ public class MainFrame extends Application {
 
         //TODO set first Scene
         mainScene = new Scene(new LoginView(this), 720, 400);
-        setSceneImage("dark");
+        setSceneImage(ConfigLoader.loadConfig().getMode());
     }
 
     /**
@@ -86,9 +87,9 @@ public class MainFrame extends Application {
 
     public void setSceneImage(String mode){
         if (mode.equals("light")){
-            mainScene.getStylesheets().add("stylesheet.css");
+            mainScene.getStylesheets().add("lightStyle.css");
         } else {
-            mainScene.getStylesheets().add("stylesheet.css");
+            mainScene.getStylesheets().add("darkStyle.css");
         }
     }
 }
