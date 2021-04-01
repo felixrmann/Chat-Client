@@ -50,7 +50,8 @@ public class LoginView extends BorderPane {
     }
 
     private void createGridPane() {
-        mainGridPane.setStyle("-fx-border-color: black; -fx-background-color: white");
+        //mainGridPane.setStyle("-fx-border-color: black; -fx-background-color: white");
+        //mainGridPane.setStyle("-fx-background-image: url('themes/dark.png'); -fx-background-repeat: stretch; -fx-background-size: 720 400; -fx-background-position: center center");
 
         setLoginPane();
         setRegisterPane();
@@ -58,12 +59,9 @@ public class LoginView extends BorderPane {
 
     private void setLoginPane() {
         BorderPane loginPane = new BorderPane();
-        loginPane.setBackground(new Background(new BackgroundFill(Color.rgb(255,255,255), CornerRadii.EMPTY, Insets.EMPTY)));
         loginPane.setPadding(new Insets(20,18,20,20));
+        loginPane.setStyle("-fx-background-color: transparent");
         mainGridPane.add(loginPane, 0,0);
-
-        signUpButton.setText("Sign Up");
-        forgotPasswordButton.setText("I forgot my password");
 
         Label loginLabel = new Label();
         Label userNameLabel = new Label();
@@ -74,36 +72,65 @@ public class LoginView extends BorderPane {
 
         loginLabel.setText("Login");
         loginLabel.setFont(new Font("Arial", 27));
+        loginLabel.setStyle("-fx-text-fill: LighxtGray");
         loginLabel.setPadding(new Insets(0,0,40,0));
         loginPane.setTop(loginLabel);
 
         GridPane userInputPane = new GridPane();
+        userInputPane.setStyle("-fx-background-color: transparent");
         loginPane.setCenter(userInputPane);
 
         userNameLabel.setText("Username / Mail");
         userNameLabel.setFont(new Font("Arial", 14));
-        userNameLabel.setPadding(new Insets(0,0,5,0));
+        userNameLabel.setTextFill(Color.web("616161"));
+        userNameLabel.setPadding(new Insets(15,0,5,0));
         userInputPane.add(userNameLabel, 0,0);
 
         userNameTextField.setPrefWidth(320);
         userNameTextField.setPrefHeight(35);
         userNameTextField.setFont(new Font("Arial", 20));
+        userNameTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: D3D3D3; -fx-text-inner-color: Silver");
         userInputPane.add(userNameTextField, 0,1);
 
         passwordLabel.setText("Password");
         passwordLabel.setFont(new Font("Arial", 14));
-        passwordLabel.setPadding(new Insets(10,0,5,0));
+        passwordLabel.setTextFill(Color.web("616161"));
+        passwordLabel.setPadding(new Insets(15,0,5,0));
         userInputPane.add(passwordLabel, 0,2);
 
+        passwordTextField.setPrefWidth(320);
+        passwordTextField.setPrefHeight(35);
+        passwordTextField.setFont(new Font("Arial", 20));
+        passwordTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: D3D3D3; -fx-text-inner-color: Silver");
         userInputPane.add(passwordTextField, 0,3);
+
+        forgotPasswordButton.setText("I forgot my password");
+        forgotPasswordButton.setStyle("-fx-background-color: transparent; -fx-text-fill: DarkBlue");
+        forgotPasswordButton.setPadding(new Insets(10,0,40,0));
         userInputPane.add(forgotPasswordButton, 0,4);
 
-        loginPane.setBottom(forgotPasswordButton);
+        signUpButton.setText("Sign In");
+        //signUpButton.setStyle("-fx-border-color: D3D3D3; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: White");
+        signUpButton.setMinHeight(35);
+        signUpButton.setPrefHeight(35);
+        signUpButton.setMaxHeight(35);
+        signUpButton.setMinWidth(250);
+        signUpButton.setPrefWidth(250);
+        signUpButton.setMaxWidth(250);
+        signUpButton.setOnMouseEntered(mouseEvent -> {
+            signUpButton.setStyle("-fx-border-color: D3D3D3; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: Gainsboro");
+        });
+        signUpButton.setOnMouseExited(mouseEvent -> {
+            signUpButton.setStyle("-fx-border-color: D3D3D3; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: White");
+        });
+        BorderPane botButtonPane = new BorderPane();
+        botButtonPane.setCenter(signUpButton);
+        botButtonPane.setPadding(new Insets(20,0,0,0));
+        loginPane.setBottom(botButtonPane);
     }
 
     private void setRegisterPane() {
         BorderPane registerPane = new BorderPane();
-        registerPane.setBackground(new Background(new BackgroundFill(Color.rgb(255,255,255), CornerRadii.EMPTY, Insets.EMPTY)));
         registerPane.setPadding(new Insets(30,30,30,30));
         mainGridPane.add(registerPane, 1,0);
 

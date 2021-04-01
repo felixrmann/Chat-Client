@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class MainFrame extends Application {
 
     Stage window;
-    Scene logInScene;
+    Scene mainScene;
 
     /**
      * starts the program
@@ -32,7 +32,7 @@ public class MainFrame extends Application {
         //TODO title
         window.setTitle("LogIn");
         //TODO first view
-        window.setScene(logInScene);
+        window.setScene(mainScene);
         window.show();
     }
 
@@ -44,7 +44,8 @@ public class MainFrame extends Application {
         window = primaryStage;
 
         //TODO set first Scene
-        logInScene = new Scene(new LoginView(this), 720, 400);
+        mainScene = new Scene(new LoginView(this), 720, 400);
+        setSceneImage("dark");
     }
 
     /**
@@ -81,5 +82,13 @@ public class MainFrame extends Application {
      */
     public void setSceneSize(double width, double height){
         window.setScene(new Scene(window.getScene().getRoot() , width, height));
+    }
+
+    public void setSceneImage(String mode){
+        if (mode.equals("light")){
+            mainScene.getStylesheets().add("stylesheet.css");
+        } else {
+            mainScene.getStylesheets().add("stylesheet.css");
+        }
     }
 }
