@@ -25,6 +25,14 @@ public class LoginController implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-
+        if (buttons.get(0).equals(event.getSource())){
+            //TODO validation
+            //open new window when good
+            //display error message when bad
+        } else if (buttons.get(1).equals(event.getSource())){
+            //TODO open new window
+        } else if (buttons.get(1).equals(event.getSource())){
+            //TODO open password reset window (not in version 1)
+        }
     }
 }
