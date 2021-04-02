@@ -49,7 +49,7 @@ public class RunClient {
 
          */
 
-        System.out.println(Util.extractMulErrorMsg(responseString).getErrorMsg());
+        System.out.println(Util.extractErrorMsg(responseString).getErrorMsg());
 
         System.exit(0);
 

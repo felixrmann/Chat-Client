@@ -109,6 +109,7 @@ public class LoginView extends BorderPane {
         loginPane.setCenter(userInputPane);
 
         errorMsgLabel.setFont(new Font("Arial", 13));
+        errorMsgLabel.setStyle("-fx-background-color: transparent; -fx-text-fill: red");
         userInputPane.add(errorMsgLabel,0,0);
 
         userNameLabel.setText("Username / Mail");
@@ -224,7 +225,6 @@ public class LoginView extends BorderPane {
      */
     public void setErrorMsgLabel(String errorMsg){
         errorMsgLabel.setText(errorMsg);
-        errorMsgLabel.setStyle("-fx-background-color: transparent; -fx-text-fill: red");
     }
 
     /**

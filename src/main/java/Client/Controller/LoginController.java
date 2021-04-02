@@ -17,11 +17,12 @@ import java.io.IOException;
 import java.util.Vector;
 
 /**
+ * The type Login controller.
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-März-31
+ * @since 2021 -März-31
  */
-
 public class LoginController implements EventHandler<ActionEvent> {
 
     private MainFrame mainFrame;
@@ -29,6 +30,14 @@ public class LoginController implements EventHandler<ActionEvent> {
     private Vector<Button> buttons;
     private Vector<TextField> fields;
 
+    /**
+     * Instantiates a new Login controller.
+     *
+     * @param mainFrame the main frame
+     * @param loginView the login view
+     * @param buttons   the buttons
+     * @param fields    the fields
+     */
     public LoginController(MainFrame mainFrame, LoginView loginView, Vector<Button> buttons, Vector<TextField> fields){
         this.mainFrame = mainFrame;
         this.loginView = loginView;
@@ -36,6 +45,10 @@ public class LoginController implements EventHandler<ActionEvent> {
         this.fields = fields;
     }
 
+    /**
+     * handles button presses
+     * @param event
+     */
     @Override
     public void handle(ActionEvent event) {
         if (buttons.get(0).equals(event.getSource())){
@@ -47,6 +60,9 @@ public class LoginController implements EventHandler<ActionEvent> {
         }
     }
 
+    /**
+     * handles sign in button press
+     */
     private void handleButton1(){
         if (!fields.get(0).getText().equals("") && !fields.get(1).getText().equals("")){
 
@@ -71,7 +87,7 @@ public class LoginController implements EventHandler<ActionEvent> {
                     }
                     case 400 -> {
                         try {
-                            loginView.setErrorMsgLabel(Util.extractMulErrorMsg(response.body().string()).getErrorMsg());
+                            loginView.setErrorMsgLabel(Util.extractErrorMsg(response.body().string()).getErrorMsg());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -79,7 +95,7 @@ public class LoginController implements EventHandler<ActionEvent> {
                     }
                     case 401 ->{
                         try {
-                            loginView.setErrorMsgLabel(Util.extractMulErrorMsg(response.body().string()).getErrorMsg());
+                            loginView.setErrorMsgLabel(Util.extractErrorMsg(response.body().string()).getErrorMsg());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

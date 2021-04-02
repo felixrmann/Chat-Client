@@ -2,7 +2,6 @@ package Client.ServerHandler;
 
 import Client.DataHandler.ConfigLoader;
 import Client.Model.Config;
-import Client.Model.ErrorMsg;
 import Client.Model.OverErrorMsg;
 import com.google.gson.Gson;
 import javafx.scene.Node;
@@ -23,11 +22,17 @@ import java.io.IOException;
  */
 
 public class Util {
+
     private static OkHttpClient client = new OkHttpClient();
     private static Call call;
     private static Gson gson = new Gson();
     private static Config config = ConfigLoader.loadConfig();
 
+    /**
+     * executes server requests
+     * @param request
+     * @return response
+     */
     public static Response executeServerRequest(Request request){
         try {
             call = client.newCall(request);
@@ -38,16 +43,19 @@ public class Util {
         return null;
     }
 
-    public static ErrorMsg extractOneErrorMsg(String responseString){
-        return gson.fromJson(responseString, ErrorMsg.class);
+    /**
+     * saves errorMsg in Object
+     * @param responseString
+     * @return ErrorMsg
+     */
+    public static OverErrorMsg extractErrorMsg(String responseString){
+        return gson.fromJson(responseString, OverErrorMsg.class);
     }
 
-    public static OverErrorMsg extractMulErrorMsg(String responseString){
-        OverErrorMsg errorMsg = gson.fromJson(responseString, OverErrorMsg.class);
-
-        return errorMsg;
-    }
-
+    /**
+     * loads the stylesheet according to the theme
+     * @param scene
+     */
     public static void loadStylesheet(Scene scene){
         if (config.getMode().equals("light")){
             scene.getStylesheets().add("lightStyle.css");
@@ -56,6 +64,10 @@ public class Util {
         }
     }
 
+    /**
+     * sets color of nodes
+     * @param node
+     */
     public static void setColor(Node node){
         if (config.getMode().equals("dark")){
             node.setStyle("-fx-text-fill: LightGray");
@@ -64,12 +76,20 @@ public class Util {
         }
     }
 
+    /**
+     * sets colors of button
+     * @param button
+     */
     public static void setButton(Button button){
         button.setStyle("-fx-border-color: '84CC16'; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: '84CC16'");
         button.setOnMouseEntered(mouseEvent -> button.setStyle("-fx-border-color: '84CC16'; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: 'A3E635'"));
         button.setOnMouseExited(mouseEvent -> button.setStyle("-fx-border-color: '84CC16'; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: '84CC16'"));
     }
 
+    /**
+     * sets theme of textfield
+     * @param textField
+     */
     public static void setTextField(TextField textField){
         if (config.getMode().equals("dark")){
             textField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: '374151'; -fx-text-inner-color: DarkGrey; -fx-background-color: '374151'");
