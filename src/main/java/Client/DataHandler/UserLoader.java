@@ -1,20 +1,20 @@
 package Client.DataHandler;
 
-import Client.Model.LoadUser;
 import Client.Model.User;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.GsonBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Type;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Vector;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Felix Mann
@@ -32,7 +32,7 @@ public class UserLoader {
      constructor
      searches for File and if it doesn't exist create the file
      */
-    private UserLoader() {
+    public UserLoader() {
         try {
             File userFile = new File(filePath);
             if (!userFile.exists()) {
@@ -53,21 +53,9 @@ public class UserLoader {
      * to a vector with all Users
      * @return Vector with JsonObjects
      */
-    public Vector<User> loadAllUsers(){
+    public User loadUser(){
         Gson gson = new Gson();
-        Vector<User> allUsers = new Vector<>();
-
-        Type userList = new TypeToken<ArrayList<LoadUser>>(){}.getType();
-
-        ArrayList<LoadUser> userArrayList = gson.fromJson(loadFileString(), userList);
-
-        if (userArrayList != null) {
-            for (LoadUser loadUser : userArrayList) {
-                allUsers.add(loadUser.convertToUser());
-            }
-        }
-
-        return allUsers;
+        return gson.fromJson(loadFileString(), User.class);
     }
 
     /**
@@ -81,5 +69,26 @@ public class UserLoader {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * saves the user in json file
+     * @param user
+     */
+    public void saveUser(User user){
+        try {
+            Map<String, String> map = new HashMap<>();
+            map.put("nameName", user.getUserName());
+            map.put("userMail", user.getUserMail());
+            map.put("userPassword", user.getUserPassword());
+            map.put("userToken", user.getuserToken());
+
+            Writer writer = new FileWriter(filePath);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(map, writer);
+            writer.close();
+        } catch (IOException e) {
+            LOGGER.error("Error loading File", e);
+        }
     }
 }

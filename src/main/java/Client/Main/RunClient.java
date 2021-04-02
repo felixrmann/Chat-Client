@@ -1,10 +1,9 @@
 package Client.Main;
 
-import Client.ServerHandler.Util;
+import com.google.gson.Gson;
 import okhttp3.*;
 
 import java.io.IOException;
-import java.net.Socket;
 
 /**
  * @author Felix Mann
@@ -14,13 +13,10 @@ import java.net.Socket;
 
 public class RunClient {
 
-    static Socket socket;
-
     public static void main(String[] args) throws IOException {
 
-
         FormBody data = new FormBody.Builder()
-                .add("username", "feix")
+                .add("username", "felix")
                 .add("password", "12345678")
                 .build();
 
@@ -42,16 +38,19 @@ public class RunClient {
 
         String responseString = response.body().string();
         System.out.println(responseString);
-        /*
+
         Gson gson = new Gson();
         Token token = gson.fromJson(responseString, Token.class);
         token.printToken();
 
-         */
 
+
+        /*
         System.out.println(Util.extractErrorMsg(responseString).getErrorMsg());
 
         System.exit(0);
+
+         */
 
 
 

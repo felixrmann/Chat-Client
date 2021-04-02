@@ -1,5 +1,7 @@
 package Client.Model;
 
+import Client.DataHandler.ConfigLoader;
+
 /**
  * File which saves the user Data
  *
@@ -9,7 +11,26 @@ package Client.Model;
  */
 public class Config {
     private String mode;
-    private String baseURL;
+    private final String baseURL;
+
+    /**
+     * Instantiates a new Config.
+     *
+     * @param mode the mode
+     */
+    public Config(String mode){
+        this.mode = mode;
+        baseURL = ConfigLoader.loadConfig().getBaseURL();
+    }
+
+    /**
+     * Sets mode.
+     *
+     * @param mode the mode
+     */
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
 
     /**
      * Gets mode.

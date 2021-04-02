@@ -1,6 +1,5 @@
 package Client.Model;
 
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 /**
@@ -18,7 +17,7 @@ public class User {
     private String userImagePath;
     private Activity userActivityState;
     private String userCustomState;
-    private ZonedDateTime userCreatedAt;
+    private String userCreatedAt;
     private String userToken;
 
     public User(){}
@@ -33,7 +32,7 @@ public class User {
         this.userPassword = userPassword;
 
         userUUID = UUID.randomUUID().toString();
-        userCreatedAt = ZonedDateTime.parse(Long.toString(System.currentTimeMillis()));
+        userCreatedAt = String.valueOf(System.currentTimeMillis());
         userToken = UUID.randomUUID().toString();
     }
 
@@ -45,7 +44,7 @@ public class User {
         this.userImagePath = userImagePath;
         this.userActivityState = Activity.getActivity(Integer.parseInt(userActivityState));
         this.userCustomState = userCustomState;
-        this.userCreatedAt = ZonedDateTime.parse(userCreatedAt);
+        this.userCreatedAt = userCreatedAt;
         this.userToken = userToken;
     }
 
@@ -77,7 +76,7 @@ public class User {
         return userCustomState;
     }
 
-    public ZonedDateTime getUserCreatedAt() {
+    public String getUserCreatedAt() {
         return userCreatedAt;
     }
 
@@ -120,7 +119,7 @@ public class User {
     }
 
     public void setUserCreatedAt(String userCreatedAt) {
-        this.userCreatedAt = ZonedDateTime.parse(userCreatedAt);
+        this.userCreatedAt = userCreatedAt;
     }
 
     public void setuserToken(String userToken) {
