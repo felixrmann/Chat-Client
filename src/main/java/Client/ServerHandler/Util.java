@@ -1,8 +1,14 @@
 package Client.ServerHandler;
 
+import Client.DataHandler.ConfigLoader;
+import Client.Model.Config;
 import Client.Model.ErrorMsg;
 import Client.Model.OverErrorMsg;
 import com.google.gson.Gson;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -20,6 +26,7 @@ public class Util {
     private static OkHttpClient client = new OkHttpClient();
     private static Call call;
     private static Gson gson = new Gson();
+    private static Config config = ConfigLoader.loadConfig();
 
     public static Response executeServerRequest(Request request){
         try {
@@ -39,5 +46,35 @@ public class Util {
         OverErrorMsg errorMsg = gson.fromJson(responseString, OverErrorMsg.class);
 
         return errorMsg;
+    }
+
+    public static void loadStylesheet(Scene scene){
+        if (config.getMode().equals("light")){
+            scene.getStylesheets().add("lightStyle.css");
+        } else {
+            scene.getStylesheets().add("darkStyle.css");
+        }
+    }
+
+    public static void setColor(Node node){
+        if (config.getMode().equals("dark")){
+            node.setStyle("-fx-text-fill: LightGray");
+        } else {
+            node.setStyle("-fx-text-fill: '1A2636'");
+        }
+    }
+
+    public static void setButton(Button button){
+        button.setStyle("-fx-border-color: '84CC16'; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: '84CC16'");
+        button.setOnMouseEntered(mouseEvent -> button.setStyle("-fx-border-color: '84CC16'; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: 'A3E635'"));
+        button.setOnMouseExited(mouseEvent -> button.setStyle("-fx-border-color: '84CC16'; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: '84CC16'"));
+    }
+
+    public static void setTextField(TextField textField){
+        if (config.getMode().equals("dark")){
+            textField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: '374151'; -fx-text-inner-color: DarkGrey; -fx-background-color: '374151'");
+        } else {
+            textField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: '9CA3AF'; -fx-text-inner-color: Black; -fx-background-color: '9CA3AF'");
+        }
     }
 }

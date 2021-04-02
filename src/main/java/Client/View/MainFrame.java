@@ -1,6 +1,6 @@
 package Client.View;
 
-import Client.DataHandler.ConfigLoader;
+import Client.ServerHandler.Util;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -46,7 +46,7 @@ public class MainFrame extends Application {
 
         //TODO set first Scene
         mainScene = new Scene(new LoginView(this), 720, 400);
-        setSceneImage(ConfigLoader.loadConfig().getMode());
+        Util.loadStylesheet(mainScene);
     }
 
     /**
@@ -83,13 +83,5 @@ public class MainFrame extends Application {
      */
     public void setSceneSize(double width, double height){
         window.setScene(new Scene(window.getScene().getRoot() , width, height));
-    }
-
-    public void setSceneImage(String mode){
-        if (mode.equals("light")){
-            mainScene.getStylesheets().add("lightStyle.css");
-        } else {
-            mainScene.getStylesheets().add("darkStyle.css");
-        }
     }
 }

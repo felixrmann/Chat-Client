@@ -1,19 +1,13 @@
 package Client.View;
 
+import Client.ServerHandler.Util;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 /**
  * @author Felix Mann
@@ -36,7 +30,9 @@ public class ConfirmView {
 
         //TODO set icon
         window.setTitle(title);
-        window.setScene(new Scene(windowContent(), 250, 100));
+        Scene scene = new Scene(windowContent(), 250, 100);
+        Util.loadStylesheet(scene);
+        window.setScene(scene);
         window.setAlwaysOnTop(true);
         window.centerOnScreen();
         window.showAndWait();
@@ -55,11 +51,11 @@ public class ConfirmView {
         BorderPane borderPane = new BorderPane();
 
         textLabel.setText(text);
-        textLabel.setStyle("-fx-font-size: 15");
+        textLabel.setFont(new Font("Arial", 15));
+        Util.setColor(textLabel);
 
         borderPane.setCenter(textLabel);
         borderPane.setBottom(botPart());
-        borderPane.setBackground(new Background(new BackgroundFill(Color.rgb(160,160,160), CornerRadii.EMPTY, Insets.EMPTY)));
         borderPane.setPadding(new Insets(5,5,5,5));
         buttonAction();
 
@@ -70,10 +66,9 @@ public class ConfirmView {
         BorderPane borderPane = new BorderPane();
 
         noButton.setText("No");
+        Util.setButton(noButton);
         yesButton.setText("Yes");
-
-        noButton.setStyle("-fx-font-size: 15");
-        yesButton.setStyle("-fx-font-size: 15");
+        Util.setButton(yesButton);
 
         borderPane.setLeft(noButton);
         borderPane.setRight(yesButton);

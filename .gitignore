@@ -1,4 +1,4 @@
 # Project exclude paths
 /target/
 
-/src/main/resources/users.json
+/src/main/resources/DATA/users.json

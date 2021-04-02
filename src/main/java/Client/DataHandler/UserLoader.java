@@ -26,7 +26,7 @@ public class UserLoader {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(UserLoader.class);
     private final static String fileName = "users.json";
-    private final static String filePath = "src\\main\\resources\\" + fileName;
+    private final static String filePath = "src\\main\\resources\\DATA\\" + fileName;
 
     /**
      constructor

@@ -17,7 +17,7 @@ import java.nio.file.Path;
 public class ConfigLoader {
 
     private final static String fileName = "config.json";
-    private final static String filePath = "src\\main\\resources\\" + fileName;
+    private final static String filePath = "src\\main\\resources\\DATA\\" + fileName;
 
     /**
      * Loads the Data and saves them into an Object
