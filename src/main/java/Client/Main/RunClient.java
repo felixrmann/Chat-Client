@@ -1,8 +1,5 @@
 package Client.Main;
 
-import com.google.gson.Gson;
-import okhttp3.*;
-
 import java.io.IOException;
 
 /**
@@ -15,6 +12,7 @@ public class RunClient {
 
     public static void main(String[] args) throws IOException {
 
+        /*
         FormBody data = new FormBody.Builder()
                 .add("username", "felix")
                 .add("password", "12345678")
@@ -42,6 +40,8 @@ public class RunClient {
         Gson gson = new Gson();
         Token token = gson.fromJson(responseString, Token.class);
         token.printToken();
+
+         */
 
 
 

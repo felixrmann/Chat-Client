@@ -10,6 +10,8 @@ import javafx.scene.layout.BorderPane;
 
 public class ChatView extends BorderPane {
 
+    public ChatView(MainFrame mainFrame){
 
+    }
 
 }

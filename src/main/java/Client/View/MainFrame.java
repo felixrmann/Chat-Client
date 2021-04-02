@@ -1,10 +1,14 @@
 package Client.View;
 
+import Client.DataHandler.UserLoader;
+import Client.Model.User;
+import Client.ServerHandler.UserService;
 import Client.ServerHandler.Util;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import okhttp3.Response;
 
 /**
  * @author Felix Mann
@@ -44,8 +48,20 @@ public class MainFrame extends Application {
     public void init(Stage primaryStage){
         window = primaryStage;
 
-        //TODO set first Scene
-        mainScene = new Scene(new LoginView(this), 720, 400);
+        UserLoader userLoader = new UserLoader();
+        User user = userLoader.loadUser();
+
+        if (user != null){
+            Response response = UserService.loginUser(user.getUserName(), user.getUserPassword());
+            if (response.code() == 200) {
+                mainScene = new Scene(new ChatView(this), 800, 800);
+            } else {
+                mainScene = new Scene(new LoginView(this), 720, 400);
+            }
+        } else {
+            mainScene = new Scene(new RegisterView(this), 400, 450);
+        }
+
         Util.loadStylesheet(mainScene);
     }
 

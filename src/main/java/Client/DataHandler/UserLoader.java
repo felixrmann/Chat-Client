@@ -1,5 +1,6 @@
 package Client.DataHandler;
 
+import Client.Model.LoadUser;
 import Client.Model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,13 +50,12 @@ public class UserLoader {
     }
 
     /**
-     * converts a String it gets from the loadFileString method
-     * to a vector with all Users
-     * @return Vector with JsonObjects
+     * loads the user
+     * @return User
      */
     public User loadUser(){
         Gson gson = new Gson();
-        return gson.fromJson(loadFileString(), User.class);
+        return gson.fromJson(loadFileString(), LoadUser.class).convertToUser();
     }
 
     /**

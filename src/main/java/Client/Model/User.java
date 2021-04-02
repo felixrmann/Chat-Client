@@ -23,7 +23,10 @@ public class User {
     public User(){}
     
     public User(String userName, String userMail, String userPassword, String userToken){
-        
+        this.userName = userName;
+        this.userMail = userMail;
+        this.userPassword = userPassword;
+        this.userToken = userToken;
     }
 
     public User(String userName, String userMail, String userPassword){

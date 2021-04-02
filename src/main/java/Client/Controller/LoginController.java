@@ -1,6 +1,6 @@
 package Client.Controller;
 
-import Client.DataHandler.ConfigLoader;
+import Client.ServerHandler.UserService;
 import Client.ServerHandler.Util;
 import Client.View.LoginView;
 import Client.View.MainFrame;
@@ -9,8 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import okhttp3.FormBody;
-import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
@@ -66,17 +64,7 @@ public class LoginController implements EventHandler<ActionEvent> {
     private void handleButton1(){
         if (!fields.get(0).getText().equals("") && !fields.get(1).getText().equals("")){
 
-            FormBody data = new FormBody.Builder()
-                    .add("username", fields.get(0).getText())
-                    .add("password", fields.get(1).getText())
-                    .build();
-
-            Request request = new Request.Builder()
-                    .url(ConfigLoader.loadConfig().getBaseURL() + "users/login")
-                    .post(data)
-                    .build();
-
-            Response response = Util.executeServerRequest(request);
+            Response response = UserService.loginUser(fields.get(0).getText(), fields.get(1).getText());
 
             if (response != null) {
                 switch (response.code()){
