@@ -54,6 +54,7 @@ public class ConfirmView {
         textLabel.setFont(new Font("Arial", 15));
         Util.setColor(textLabel);
 
+        borderPane.getStyleClass().add("confirm");
         borderPane.setCenter(textLabel);
         borderPane.setBottom(botPart());
         borderPane.setPadding(new Insets(5,5,5,5));

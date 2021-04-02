@@ -4,6 +4,7 @@ import Client.DataHandler.ConfigLoader;
 import Client.ServerHandler.Util;
 import Client.View.LoginView;
 import Client.View.MainFrame;
+import Client.View.RegisterView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -40,7 +41,7 @@ public class LoginController implements EventHandler<ActionEvent> {
         if (buttons.get(0).equals(event.getSource())){
             handleButton1();
         } else if (buttons.get(1).equals(event.getSource())){
-            //TODO open new window
+            mainFrame.setNewScene(new RegisterView(mainFrame), 400, 450);
         } else if (buttons.get(1).equals(event.getSource())){
             //TODO open password reset window (not in version 1)
         }

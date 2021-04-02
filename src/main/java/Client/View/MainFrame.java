@@ -56,7 +56,9 @@ public class MainFrame extends Application {
      * @param height
      */
     public void setNewScene(BorderPane borderPane, double width, double height){
-        window.setScene(new Scene(borderPane, width, height));
+        Scene scene = new Scene(borderPane, width, height);
+        Util.loadStylesheet(scene);
+        window.setScene(scene);
         window.centerOnScreen();
     }
 

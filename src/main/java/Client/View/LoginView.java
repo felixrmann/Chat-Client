@@ -14,11 +14,12 @@ import javafx.scene.text.Font;
 import java.util.Vector;
 
 /**
+ * The type Login view.
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-März-26
+ * @since 2021 -März-26
  */
-
 public class LoginView extends BorderPane {
 
     private MainFrame mainFrame;
@@ -30,7 +31,13 @@ public class LoginView extends BorderPane {
     private Label errorMsgLabel;
     private TextField userNameTextField;
     private PasswordField passwordTextField;
+    private final String className = "login";
 
+    /**
+     * Instantiates a new Login view.
+     *
+     * @param mainFrame the main frame
+     */
     public LoginView(MainFrame mainFrame){
         this.mainFrame = mainFrame;
         init();
@@ -40,6 +47,9 @@ public class LoginView extends BorderPane {
         setCenter(mainGridPane);
     }
 
+    /**
+     * all global variables are being initialized
+     */
     private void init() {
         buttons = new Vector<>();
         fields = new Vector<>();
@@ -48,6 +58,7 @@ public class LoginView extends BorderPane {
         passwordTextField = new PasswordField();
         loginController = new LoginController(mainFrame, this, buttons, fields);
         mainGridPane = new GridPane();
+        mainGridPane.getStyleClass().add("login");
 
         signUpButton = new Button();
         createAccountButton = new Button();
@@ -66,11 +77,17 @@ public class LoginView extends BorderPane {
         forgotPasswordButton.setOnAction(loginController);
     }
 
+    /**
+     * sets mainPane
+     */
     private void createGridPane() {
         setLoginPane();
         setRegisterPane();
     }
 
+    /**
+     * sets left side of the pane
+     */
     private void setLoginPane() {
         BorderPane loginPane = new BorderPane();
         loginPane.setPadding(new Insets(20,18,20,20));
@@ -137,6 +154,9 @@ public class LoginView extends BorderPane {
         loginPane.setBottom(botButtonPane);
     }
 
+    /**
+     * sets right side of the pane
+     */
     private void setRegisterPane() {
         BorderPane registerPane = new BorderPane();
         registerPane.setPadding(new Insets(20,18,20,20));
@@ -197,8 +217,22 @@ public class LoginView extends BorderPane {
         registerInfoPane.add(botButtonPane, 0, 4);
     }
 
+    /**
+     * Set error msg label.
+     *
+     * @param errorMsg the error msg
+     */
     public void setErrorMsgLabel(String errorMsg){
         errorMsgLabel.setText(errorMsg);
         errorMsgLabel.setStyle("-fx-background-color: transparent; -fx-text-fill: red");
+    }
+
+    /**
+     * Gets class name.
+     *
+     * @return the class name
+     */
+    public String getClassName() {
+        return className;
     }
 }

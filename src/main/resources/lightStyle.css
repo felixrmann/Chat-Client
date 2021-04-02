@@ -1,6 +1,20 @@
-.root {
+.login {
     -fx-background-image: url("themes/light.png");
     -fx-background-repeat: stretch;
     -fx-background-position: center center;
     -fx-background-size: 720 400;
+}
+
+.register {
+    -fx-background-image: url("themes/light.png");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-background-size: 400 450;
+}
+
+.confirm {
+    -fx-background-image: url("themes/light.png");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-background-size: 250 100;
 }
