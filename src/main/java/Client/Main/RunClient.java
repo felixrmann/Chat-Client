@@ -1,16 +1,10 @@
 package Client.Main;
 
-import com.fasterxml.jackson.databind.*;
-import com.google.gson.*;
+import Client.ServerHandler.Util;
 import okhttp3.*;
-import okhttp3.Request.Builder;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author Felix Mann
@@ -26,7 +20,7 @@ public class RunClient {
 
 
         FormBody data = new FormBody.Builder()
-                .add("username", "felix")
+                .add("username", "feix")
                 .add("password", "12345678")
                 .build();
 
@@ -41,18 +35,21 @@ public class RunClient {
                 .build();
 
         OkHttpClient client = new OkHttpClient();
-        Call call = client.newCall(request1);
+        Call call = client.newCall(request);
         Response response = call.execute();
 
-        System.out.println(response.body().string());
+        System.out.println("Code: " + response.code());
 
-        /*
         String responseString = response.body().string();
+        System.out.println(responseString);
+        /*
         Gson gson = new Gson();
         Token token = gson.fromJson(responseString, Token.class);
         token.printToken();
 
          */
+
+        System.out.println(Util.extractMulErrorMsg(responseString).getErrorMsg());
 
         System.exit(0);
 

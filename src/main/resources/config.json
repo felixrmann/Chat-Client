@@ -1,3 +1,4 @@
 {
-  mode: "light"
+  mode: "light",
+  baseURL: "https://chat.mahler.link/api/v1/"
 }

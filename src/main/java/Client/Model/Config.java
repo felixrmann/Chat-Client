@@ -9,6 +9,7 @@ package Client.Model;
  */
 public class Config {
     private String mode;
+    private String baseURL;
 
     /**
      * Gets mode.
@@ -17,5 +18,14 @@ public class Config {
      */
     public String getMode() {
         return mode;
+    }
+
+    /**
+     * Gets base url.
+     *
+     * @return the base url
+     */
+    public String getBaseURL() {
+        return baseURL;
     }
 }

@@ -27,7 +27,11 @@ public class LoginView extends BorderPane {
     private LoginController loginController;
     private GridPane mainGridPane;
     private Vector<Button> buttons;
+    private Vector<TextField> fields;
     private Button signUpButton, createAccountButton, forgotPasswordButton;
+    private Label errorMsgLabel;
+    private TextField userNameTextField;
+    private PasswordField passwordTextField;
     private final Config config = ConfigLoader.loadConfig();
 
     public LoginView(MainFrame mainFrame){
@@ -41,16 +45,28 @@ public class LoginView extends BorderPane {
 
     private void init() {
         buttons = new Vector<>();
-        loginController = new LoginController(mainFrame, buttons);
+        fields = new Vector<>();
+
+        userNameTextField = new TextField();
+        passwordTextField = new PasswordField();
+        loginController = new LoginController(mainFrame, this, buttons, fields);
         mainGridPane = new GridPane();
 
         signUpButton = new Button();
         createAccountButton = new Button();
         forgotPasswordButton = new Button();
+        errorMsgLabel = new Label();
 
         buttons.add(signUpButton);
         buttons.add(createAccountButton);
         buttons.add(forgotPasswordButton);
+
+        fields.add(userNameTextField);
+        fields.add(passwordTextField);
+
+        signUpButton.setOnAction(loginController);
+        createAccountButton.setOnAction(loginController);
+        forgotPasswordButton.setOnAction(loginController);
     }
 
     private void createGridPane() {
@@ -68,9 +84,6 @@ public class LoginView extends BorderPane {
         Label userNameLabel = new Label();
         Label passwordLabel = new Label();
 
-        TextField userNameTextField = new TextField();
-        PasswordField passwordTextField = new PasswordField();
-
         loginLabel.setText("Login");
         loginLabel.setFont(new Font("Arial", 27));
         setColor(loginLabel);
@@ -81,11 +94,14 @@ public class LoginView extends BorderPane {
         userInputPane.setStyle("-fx-background-color: transparent");
         loginPane.setCenter(userInputPane);
 
+        errorMsgLabel.setFont(new Font("Arial", 13));
+        userInputPane.add(errorMsgLabel,0,0);
+
         userNameLabel.setText("Username / Mail");
         userNameLabel.setFont(new Font("Arial", 14));
         setColor(userNameLabel);
-        userNameLabel.setPadding(new Insets(15,0,5,0));
-        userInputPane.add(userNameLabel, 0,0);
+        userNameLabel.setPadding(new Insets(0,0,5,0));
+        userInputPane.add(userNameLabel,0,1);
 
         userNameTextField.setPrefWidth(320);
         userNameTextField.setPrefHeight(35);
@@ -95,13 +111,13 @@ public class LoginView extends BorderPane {
         } else {
             userNameTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: '9CA3AF'; -fx-text-inner-color: Black; -fx-background-color: '9CA3AF'");
         }
-        userInputPane.add(userNameTextField, 0,1);
+        userInputPane.add(userNameTextField, 0,2);
 
         passwordLabel.setText("Password");
         passwordLabel.setFont(new Font("Arial", 14));
         setColor(passwordLabel);
         passwordLabel.setPadding(new Insets(15,0,5,0));
-        userInputPane.add(passwordLabel, 0,2);
+        userInputPane.add(passwordLabel, 0,3);
 
         passwordTextField.setPrefWidth(320);
         passwordTextField.setPrefHeight(35);
@@ -111,12 +127,12 @@ public class LoginView extends BorderPane {
         } else {
             passwordTextField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: '9CA3AF'; -fx-text-inner-color: Black; -fx-background-color: '9CA3AF'");
         }
-        userInputPane.add(passwordTextField, 0,3);
+        userInputPane.add(passwordTextField, 0,4);
 
         forgotPasswordButton.setText("I forgot my password");
         forgotPasswordButton.setStyle("-fx-background-color: transparent; -fx-text-fill: DarkBlue");
         forgotPasswordButton.setPadding(new Insets(10,0,40,0));
-        userInputPane.add(forgotPasswordButton, 0,4);
+        userInputPane.add(forgotPasswordButton, 0,5);
 
         signUpButton.setText("Sign In");
         signUpButton.setStyle("-fx-border-color: '84CC16'; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: '84CC16'");
@@ -202,5 +218,10 @@ public class LoginView extends BorderPane {
         } else {
             node.setStyle("-fx-text-fill: '1A2636'");
         }
+    }
+
+    public void setErrorMsgLabel(String errorMsg){
+        errorMsgLabel.setText(errorMsg);
+        errorMsgLabel.setStyle("-fx-background-color: transparent; -fx-text-fill: red");
     }
 }
