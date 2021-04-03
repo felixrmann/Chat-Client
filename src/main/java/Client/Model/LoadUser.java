@@ -10,7 +10,6 @@ package Client.Model;
  */
 public class LoadUser {
     private String userName;
-    private String userMail;
     private String userPassword;
     private String userToken;
 
@@ -19,6 +18,6 @@ public class LoadUser {
      * @return the user
      */
     public User convertToUser(){
-       return new User(userName, userMail, userPassword, userToken);
+       return new User(userName, userPassword, userToken);
     }
 }

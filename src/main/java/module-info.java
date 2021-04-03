@@ -8,6 +8,7 @@ module Chat.Client {
     requires com.fasterxml.jackson.databind;
     requires com.google.gson;
     requires slf4j.api;
+    requires java.desktop;
 
     opens Client.Main;
     opens Client.Model;

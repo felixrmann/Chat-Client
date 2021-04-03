@@ -1,7 +1,5 @@
 package Client.Model;
 
-import java.util.UUID;
-
 /**
  * @author Felix Mann
  * @version 1.0
@@ -22,13 +20,13 @@ public class User {
 
     public User(){}
     
-    public User(String userName, String userMail, String userPassword, String userToken){
+    public User(String userName, String userPassword, String userToken){
         this.userName = userName;
-        this.userMail = userMail;
         this.userPassword = userPassword;
         this.userToken = userToken;
     }
 
+    /*
     public User(String userName, String userMail, String userPassword){
         this.userName = userName;
         this.userMail = userMail;
@@ -38,6 +36,8 @@ public class User {
         userCreatedAt = String.valueOf(System.currentTimeMillis());
         userToken = UUID.randomUUID().toString();
     }
+
+     */
 
     public User(String userUUID, String userName, String userMail, String userPassword, String userImagePath, String userActivityState, String userCustomState, String userCreatedAt, String userToken){
         this.userUUID = userUUID;
@@ -108,8 +108,6 @@ public class User {
     }
 
     public void setNewRefreshToken(){
-        userToken = "";
-        userToken = UUID.randomUUID().toString();
         //TODO wird von server geladen
     }
 

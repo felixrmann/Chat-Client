@@ -1,14 +1,10 @@
 package Client.View;
 
-import Client.DataHandler.UserLoader;
-import Client.Model.User;
-import Client.ServerHandler.UserService;
 import Client.ServerHandler.Util;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import okhttp3.Response;
 
 /**
  * @author Felix Mann
@@ -35,7 +31,7 @@ public class MainFrame extends Application {
         });
         window.setResizable(false);
         //TODO title
-        window.setTitle("LogIn");
+        window.setTitle("Connecting...");
         //TODO first view
         window.setScene(mainScene);
         window.show();
@@ -48,6 +44,9 @@ public class MainFrame extends Application {
     public void init(Stage primaryStage){
         window = primaryStage;
 
+        mainScene = new Scene(new StartView(this), 400,350);
+        Util.loadStylesheet(mainScene);
+        /*
         UserLoader userLoader = new UserLoader();
         User user = userLoader.loadUser();
 
@@ -63,6 +62,8 @@ public class MainFrame extends Application {
         }
 
         Util.loadStylesheet(mainScene);
+
+         */
     }
 
     /**

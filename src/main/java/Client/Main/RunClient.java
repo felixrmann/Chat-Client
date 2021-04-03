@@ -1,5 +1,8 @@
 package Client.Main;
 
+import Client.DataHandler.UserLoader;
+import Client.Model.User;
+
 import java.io.IOException;
 
 /**
@@ -11,6 +14,11 @@ import java.io.IOException;
 public class RunClient {
 
     public static void main(String[] args) throws IOException {
+
+        UserLoader userLoader = new UserLoader();
+        User user = userLoader.loadUser();
+        System.out.println(user.getUserName());
+        System.out.println(user.getUserPassword());
 
         /*
         FormBody data = new FormBody.Builder()

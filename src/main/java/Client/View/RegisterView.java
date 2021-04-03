@@ -41,7 +41,6 @@ public class RegisterView extends BorderPane {
         init();
 
         createGridPane();
-
     }
 
     /**

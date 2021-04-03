@@ -1,3 +1,10 @@
+.start {
+    -fx-background-image: url("themes/dark.png");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-background-size: 400 350;
+}
+
 .login {
     -fx-background-image: url("themes/dark.png");
     -fx-background-repeat: stretch;
