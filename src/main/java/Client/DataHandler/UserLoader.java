@@ -73,15 +73,12 @@ public class UserLoader {
 
     /**
      * saves the user in json file
-     * @param user
+     * @param userToken
      */
-    public void saveUser(User user){
+    public void saveUser(String userToken){
         try {
             Map<String, String> map = new HashMap<>();
-            map.put("nameName", user.getUserName());
-            map.put("userMail", user.getUserMail());
-            map.put("userPassword", user.getUserPassword());
-            map.put("userToken", user.getuserToken());
+            map.put("userToken", userToken);
 
             Writer writer = new FileWriter(filePath);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

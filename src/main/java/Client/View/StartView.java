@@ -28,8 +28,6 @@ public class StartView extends BorderPane {
         init();
 
         createPane();
-
-        startController.setUpProject();
     }
 
     private void init() {
@@ -63,6 +61,15 @@ public class StartView extends BorderPane {
 
             setBottom(botPane);
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void execute(){
+        try {
+            Thread.sleep(500);
+            startController.setUpProject();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

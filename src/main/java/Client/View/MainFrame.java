@@ -1,10 +1,12 @@
 package Client.View;
 
 import Client.ServerHandler.Util;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * @author Felix Mann
@@ -19,6 +21,7 @@ public class MainFrame extends Application {
 
     /**
      * starts the program
+     *
      * @param primaryStage
      */
     @Override
@@ -39,40 +42,29 @@ public class MainFrame extends Application {
 
     /**
      * init method
+     *
      * @param primaryStage
      */
-    public void init(Stage primaryStage){
+    public void init(Stage primaryStage) {
         window = primaryStage;
 
-        mainScene = new Scene(new StartView(this), 400,350);
-        Util.loadStylesheet(mainScene);
-        /*
-        UserLoader userLoader = new UserLoader();
-        User user = userLoader.loadUser();
-
-        if (user != null){
-            Response response = UserService.loginUser(user.getUserName(), user.getUserPassword());
-            if (response.code() == 200) {
-                mainScene = new Scene(new ChatView(this), 800, 800);
-            } else {
-                mainScene = new Scene(new LoginView(this), 720, 400);
-            }
-        } else {
-            mainScene = new Scene(new RegisterView(this), 400, 450);
-        }
-
+        StartView startView = new StartView(this);
+        mainScene = new Scene(startView, 400, 350);
         Util.loadStylesheet(mainScene);
 
-         */
+        PauseTransition delay = new PauseTransition(Duration.millis(Math.random() * (2000 - 1000) + 1000));
+        delay.setOnFinished(event -> startView.execute());
+        delay.play();
     }
 
     /**
      * updates the scene
+     *
      * @param borderPane
      * @param width
      * @param height
      */
-    public void setNewScene(BorderPane borderPane, double width, double height){
+    public void setNewScene(BorderPane borderPane, double width, double height) {
         Scene scene = new Scene(borderPane, width, height);
         Util.loadStylesheet(scene);
         window.setScene(scene);
@@ -82,7 +74,7 @@ public class MainFrame extends Application {
     /**
      * handles the closing of the program
      */
-    public void closeProgram(){
+    public void closeProgram() {
         boolean answer = ConfirmView.display("Exit", "Do you want to exit the program?");
         if (answer) window.close();
         System.exit(0);
@@ -90,18 +82,20 @@ public class MainFrame extends Application {
 
     /**
      * method which returns the current stage
+     *
      * @return the stage
      */
-    public Stage getStage(){
+    public Stage getStage() {
         return window;
     }
 
     /**
      * updates the size of the scene
+     *
      * @param width
      * @param height
      */
-    public void setSceneSize(double width, double height){
-        window.setScene(new Scene(window.getScene().getRoot() , width, height));
+    public void setSceneSize(double width, double height) {
+        window.setScene(new Scene(window.getScene().getRoot(), width, height));
     }
 }

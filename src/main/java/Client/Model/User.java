@@ -20,9 +20,7 @@ public class User {
 
     public User(){}
     
-    public User(String userName, String userPassword, String userToken){
-        this.userName = userName;
-        this.userPassword = userPassword;
+    public User(String userToken){
         this.userToken = userToken;
     }
 

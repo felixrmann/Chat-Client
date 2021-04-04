@@ -9,8 +9,6 @@ package Client.Model;
  * @since 2021 -März-30
  */
 public class LoadUser {
-    private String userName;
-    private String userPassword;
     private String userToken;
 
     /**
@@ -18,6 +16,6 @@ public class LoadUser {
      * @return the user
      */
     public User convertToUser(){
-       return new User(userName, userPassword, userToken);
+       return new User(userToken);
     }
 }
