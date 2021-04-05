@@ -48,6 +48,7 @@ public class RegisterView extends BorderPane {
      */
     private void init(){
         getStyleClass().add("register");
+        mainFrame.setResizable(false);
         buttons = new Vector<>();
         textFields = new Vector<>();
 

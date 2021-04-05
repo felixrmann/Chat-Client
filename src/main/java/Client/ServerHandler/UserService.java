@@ -27,4 +27,20 @@ public class UserService {
         return Util.executeServerRequest(request);
     }
 
+    public static Response registerUser(String userName, String userMail, String userPassword, String userConfPassword){
+        FormBody data = new FormBody.Builder()
+                .add("username", userName)
+                .add("mail", userMail)
+                .add("password", userPassword)
+                .add("confirm_password", userConfPassword)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(ConfigLoader.loadConfig().getBaseURL() + "users/register")
+                .post(data)
+                .build();
+
+        return Util.executeServerRequest(request);
+    }
+
 }

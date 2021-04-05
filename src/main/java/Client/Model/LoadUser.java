@@ -10,9 +10,29 @@ package Client.Model;
  */
 public class LoadUser {
     private String userToken;
+    private String token;
+
+    /**
+     * Gets token.
+     *
+     * @return the token
+     */
+    public String getToken() {
+        return token;
+    }
+
+    /**
+     * Gets user token.
+     *
+     * @return the user token
+     */
+    public String getUserToken() {
+        return userToken;
+    }
 
     /**
      * Convert to user user.
+     *
      * @return the user
      */
     public User convertToUser(){

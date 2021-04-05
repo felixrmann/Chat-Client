@@ -51,6 +51,8 @@ public class LoginView extends BorderPane {
      * all global variables are being initialized
      */
     private void init() {
+        getStyleClass().add("login");
+        mainFrame.setResizable(false);
         buttons = new Vector<>();
         fields = new Vector<>();
 

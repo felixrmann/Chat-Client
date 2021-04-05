@@ -1,7 +1,9 @@
 package Client.Controller;
 
-import Client.DataHandler.ConfigLoader;
+import Client.DataHandler.UserLoader;
+import Client.ServerHandler.UserService;
 import Client.ServerHandler.Util;
+import Client.View.ChatView;
 import Client.View.LoginView;
 import Client.View.MainFrame;
 import Client.View.RegisterView;
@@ -9,8 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import okhttp3.FormBody;
-import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
@@ -65,50 +65,26 @@ public class RegisterController implements EventHandler<ActionEvent> {
         if (allFieldsFilled() == 0){
             if (fields.get(2).getText().equals(fields.get(3).getText())){
 
-                FormBody data = new FormBody.Builder()
-                        .add("username",fields.get(0).getText())
-                        .add("mail", fields.get(1).getText())
-                        .add("password", fields.get(2).getText())
-                        .add("confirm_password", fields.get(3).getText())
-                        .build();
-
-                Request request = new Request.Builder()
-                        .url(ConfigLoader.loadConfig().getBaseURL() + "users/register")
-                        .post(data)
-                        .build();
-
-                Response response = Util.executeServerRequest(request);
+                Response response = UserService.registerUser(fields.get(0).getText(), fields.get(1).getText(), fields.get(2).getText(), fields.get(3).getText());
 
                 if (response != null) {
                     switch (response.code()){
                         case 200 -> {
-                            //TODO open new window
-                            registerView.setErrorMsgLabel("");
-                            System.out.println(200);
+                            try {
+                                UserLoader userLoader = new UserLoader();
+                                userLoader.saveUser(Util.extractToken(response.body().string()));
+                                mainFrame.setNewScene(new ChatView(mainFrame), 800, 800);
+                                registerView.setErrorMsgLabel("");
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
-                        case 400 -> {
+                        case 400, 401, 500 -> {
                             try {
                                 registerView.setErrorMsgLabel(Util.extractErrorMsg(response.body().string()).getErrorMsg());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            System.out.println("400");
-                        }
-                        case 401 -> {
-                            try {
-                                registerView.setErrorMsgLabel(Util.extractErrorMsg(response.body().string()).getErrorMsg());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            System.out.println("401");
-                        }
-                        case 500 -> {
-                            try {
-                                registerView.setErrorMsgLabel(Util.extractErrorMsg(response.body().string()).getErrorMsg());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            System.out.println("500");
                         }
                     }
                 }

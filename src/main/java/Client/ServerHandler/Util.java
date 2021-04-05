@@ -2,6 +2,7 @@ package Client.ServerHandler;
 
 import Client.DataHandler.ConfigLoader;
 import Client.Model.Config;
+import Client.Model.LoadUser;
 import Client.Model.OverErrorMsg;
 import com.google.gson.Gson;
 import javafx.scene.Node;
@@ -50,6 +51,15 @@ public class Util {
      */
     public static OverErrorMsg extractErrorMsg(String responseString){
         return gson.fromJson(responseString, OverErrorMsg.class);
+    }
+
+    /**
+     * extracts the token from json
+     * @param responseString
+     * @return userToken
+     */
+    public static String extractToken(String responseString){
+        return gson.fromJson(responseString, LoadUser.class).getToken();
     }
 
     /**

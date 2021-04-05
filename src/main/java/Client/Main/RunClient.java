@@ -1,7 +1,9 @@
 package Client.Main;
 
 import Client.DataHandler.UserLoader;
-import Client.Model.User;
+import Client.ServerHandler.UserService;
+import Client.ServerHandler.Util;
+import okhttp3.Response;
 
 import java.io.IOException;
 
@@ -15,10 +17,13 @@ public class RunClient {
 
     public static void main(String[] args) throws IOException {
 
+        Response response = UserService.registerUser("felix5", "mail5@mail.mail", "12345678", "12345678");
+        System.out.println(response.code());
+        String token = Util.extractToken(response.body().string());
+        System.out.println(token);
+
         UserLoader userLoader = new UserLoader();
-        User user = userLoader.loadUser();
-        System.out.println(user.getUserName());
-        System.out.println(user.getUserPassword());
+        userLoader.saveUser(token);
 
         /*
         FormBody data = new FormBody.Builder()

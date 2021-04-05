@@ -1,12 +1,10 @@
 package Client.View;
 
 import Client.ServerHandler.Util;
-import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 /**
  * @author Felix Mann
@@ -32,7 +30,6 @@ public class MainFrame extends Application {
             event.consume();
             closeProgram();
         });
-        window.setResizable(false);
         //TODO title
         window.setTitle("Connecting...");
         //TODO first view
@@ -48,6 +45,14 @@ public class MainFrame extends Application {
     public void init(Stage primaryStage) {
         window = primaryStage;
 
+
+        mainScene = new Scene(new ChatView(this));
+        window.setMaximized(true);
+        Util.loadStylesheet(mainScene);
+
+
+
+        /*
         StartView startView = new StartView(this);
         mainScene = new Scene(startView, 400, 350);
         Util.loadStylesheet(mainScene);
@@ -55,6 +60,10 @@ public class MainFrame extends Application {
         PauseTransition delay = new PauseTransition(Duration.millis(Math.random() * (2000 - 1000) + 1000));
         delay.setOnFinished(event -> startView.execute());
         delay.play();
+
+         */
+
+
     }
 
     /**
@@ -97,5 +106,20 @@ public class MainFrame extends Application {
      */
     public void setSceneSize(double width, double height) {
         window.setScene(new Scene(window.getScene().getRoot(), width, height));
+    }
+
+    /**
+     * toggles the resizability of the window
+     * @param resizable
+     */
+    public void setResizable(boolean resizable){
+        window.setResizable(resizable);
+    }
+
+    /**
+     * makes the window max-sized
+     */
+    public void setMaxSize(){
+        window.setMaximized(true);
     }
 }

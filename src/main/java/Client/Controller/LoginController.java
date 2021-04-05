@@ -1,7 +1,9 @@
 package Client.Controller;
 
+import Client.DataHandler.UserLoader;
 import Client.ServerHandler.UserService;
 import Client.ServerHandler.Util;
+import Client.View.ChatView;
 import Client.View.LoginView;
 import Client.View.MainFrame;
 import Client.View.RegisterView;
@@ -69,25 +71,21 @@ public class LoginController implements EventHandler<ActionEvent> {
             if (response != null) {
                 switch (response.code()){
                     case 200 -> {
-                        //TODO open new window
-                        loginView.setErrorMsgLabel("");
-                        System.out.println("200");
+                        try {
+                            UserLoader userLoader = new UserLoader();
+                            userLoader.saveUser(Util.extractToken(response.body().string()));
+                            mainFrame.setNewScene(new ChatView(mainFrame), 800, 800);
+                            loginView.setErrorMsgLabel("");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    case 400 -> {
+                    case 400, 401 -> {
                         try {
                             loginView.setErrorMsgLabel(Util.extractErrorMsg(response.body().string()).getErrorMsg());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        System.out.println(400);
-                    }
-                    case 401 ->{
-                        try {
-                            loginView.setErrorMsgLabel(Util.extractErrorMsg(response.body().string()).getErrorMsg());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        System.out.println(401);
                     }
                 }
             }

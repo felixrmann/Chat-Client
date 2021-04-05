@@ -6,7 +6,6 @@ import Client.ServerHandler.ChatService;
 import Client.View.ChatView;
 import Client.View.LoginView;
 import Client.View.MainFrame;
-import Client.View.RegisterView;
 import okhttp3.Response;
 
 /**
@@ -31,14 +30,11 @@ public class StartController {
             Response response = ChatService.loadChats(user.getuserToken());
             if (response.code() == 200) {
                 mainFrame.setNewScene(new ChatView(mainFrame), 800, 800);
-                System.out.println("all good");
             } else {
                 mainFrame.setNewScene(new LoginView(mainFrame), 720, 400);
-                System.out.println("wrong token");
             }
         } else {
-            mainFrame.setNewScene(new RegisterView(mainFrame), 400, 450);
-            System.out.println("new user");
+            mainFrame.setNewScene(new LoginView(mainFrame), 720, 400);
         }
     }
 

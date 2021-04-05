@@ -10,8 +10,15 @@ import javafx.scene.layout.BorderPane;
 
 public class ChatView extends BorderPane {
 
-    public ChatView(MainFrame mainFrame){
+    private MainFrame mainFrame;
 
+    public ChatView(MainFrame mainFrame){
+        this.mainFrame = mainFrame;
+
+        init();
     }
 
+    private void init() {
+        mainFrame.setResizable(true);
+    }
 }

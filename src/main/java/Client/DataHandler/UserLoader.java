@@ -41,6 +41,9 @@ public class UserLoader {
                 if (newUserFile.createNewFile()) {
                     LOGGER.info("File created");
                 }
+                FileWriter fileWriter = new FileWriter(userFile);
+                fileWriter.write("{\n}");
+                fileWriter.close();
             } else {
                 LOGGER.info("File exists");
             }
