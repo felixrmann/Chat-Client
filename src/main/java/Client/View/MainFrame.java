@@ -30,9 +30,6 @@ public class MainFrame extends Application {
             event.consume();
             closeProgram();
         });
-        //TODO title
-        window.setTitle("Connecting...");
-        //TODO first view
         window.setScene(mainScene);
         window.show();
     }
@@ -47,7 +44,6 @@ public class MainFrame extends Application {
 
 
         mainScene = new Scene(new ChatView(this));
-        window.setMaximized(true);
         Util.loadStylesheet(mainScene);
 
 
@@ -121,5 +117,23 @@ public class MainFrame extends Application {
      */
     public void setMaxSize(){
         window.setMaximized(true);
+    }
+
+    /**
+     * sets minimum height and with of window
+     * @param height
+     * @param width
+     */
+    public void setMinSize(double width, double height){
+        window.setMinWidth(width);
+        window.setMinHeight(height);
+    }
+
+    /**
+     * sets Name of window
+     * @param stageName
+     */
+    public void setStageName(String stageName){
+        window.setTitle(stageName);
     }
 }

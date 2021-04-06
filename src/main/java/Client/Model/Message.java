@@ -1,4 +1,4 @@
-package Server.Model;
+package Client.Model;
 
 import java.util.UUID;
 
@@ -15,8 +15,6 @@ public class Message {
     private String messageCreationDate;
     private String messageAuthorUUID;
     private String messageChatUUID;
-
-    public Message(){}
 
     public Message(String messageContent, String messageAuthorUUID, String messageChatUUID){
         this.messageContent = messageContent;

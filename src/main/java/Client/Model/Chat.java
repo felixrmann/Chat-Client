@@ -19,6 +19,13 @@ public class Chat {
 
     public Chat(){}
 
+    public Chat(String chatUUID, String chatName, int chatType, String chatImagePath){
+        this.chatUUID = chatUUID;
+        this.chatName = chatName;
+        this.chatType = ChatType.getChatType(chatType);
+        this.chatImagePath = chatImagePath;
+    }
+
     public Chat (String chatName, ChatType chatType){
         this.chatName = chatName;
         this.chatType = chatType;

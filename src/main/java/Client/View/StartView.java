@@ -31,6 +31,7 @@ public class StartView extends BorderPane {
     }
 
     private void init() {
+        mainFrame.setStageName("Connecting...");
         mainFrame.setResizable(false);
         setStyle("-fx-background-color: '001d30'");
 

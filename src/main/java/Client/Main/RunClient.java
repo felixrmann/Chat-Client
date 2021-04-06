@@ -1,11 +1,14 @@
 package Client.Main;
 
 import Client.DataHandler.UserLoader;
-import Client.ServerHandler.UserService;
-import Client.ServerHandler.Util;
-import okhttp3.Response;
+import Client.Model.Chat;
+import Client.ServerHandler.ChatService;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Vector;
 
 /**
  * @author Felix Mann
@@ -17,13 +20,69 @@ public class RunClient {
 
     public static void main(String[] args) throws IOException {
 
-        Response response = UserService.registerUser("felix5", "mail5@mail.mail", "12345678", "12345678");
-        System.out.println(response.code());
-        String token = Util.extractToken(response.body().string());
-        System.out.println(token);
+        try {
+            UserLoader userLoader = new UserLoader();
 
+            JSONObject jsonObject = new JSONObject(ChatService.loadChats(userLoader.loadUser().getuserToken()).body().string());
+            JSONArray array = jsonObject.getJSONArray("chats");
+
+            Vector<Chat> chats = new Vector<>();
+
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject o = array.getJSONObject(i);
+                chats.add(new Chat(o.optString("id"), o.optString("name"), o.optInt("type"), o.optString("imagePath")));
+            }
+
+
+            for (Chat chat : chats) {
+                System.out.println(chat.getChatName());
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        System.exit(0);
+
+        /*
         UserLoader userLoader = new UserLoader();
-        userLoader.saveUser(token);
+        Response response = ChatService.loadChats(userLoader.loadUser().getuserToken());
+        String respo = response.body().string();
+        System.out.println(respo);
+
+        Gson gson = new Gson();
+        LoadChat loadChat = gson.fromJson(respo, LoadChat.class);
+        System.out.println(loadChat.toString());
+
+        System.exit(0);
+
+         */
+
+
+
+        /*
+        [
+          {
+           "status": "available",
+           "managed": true,
+           "name": "va_85621143-1133-412f-83b4-57a01a552638_",
+           "support": {
+            "status": "supported"
+           },
+          },
+          {
+           "status": "in-use",
+           "managed": false,
+           "name": "bt_newd20",
+           "support": {
+            "status": "not_supported",
+            "reasons": [
+             "This volume is not a candidate for management because it is already attached to a virtual machine.  To manage this volume with PowerVC, select the virtual machine to which the volume is attached for management. The attached volume will be automatically included for management."
+             }
+            ]
+         */
+
+
 
         /*
         FormBody data = new FormBody.Builder()

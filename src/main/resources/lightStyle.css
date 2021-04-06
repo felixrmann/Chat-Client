@@ -25,3 +25,10 @@
     -fx-background-position: center center;
     -fx-background-size: 250 100;
 }
+
+.chat {
+    -fx-background-image: url("themes/light.png");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-background-size: 100% 100%;
+}
