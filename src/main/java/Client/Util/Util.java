@@ -1,4 +1,4 @@
-package Client.ServerHandler;
+package Client.Util;
 
 import Client.DataHandler.ConfigLoader;
 import Client.Model.Config;

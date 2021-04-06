@@ -37,6 +37,12 @@ public class User {
 
      */
 
+    public User(String userUUID, String userName, String userImagePath) {
+        this.userUUID = userUUID;
+        this.userName = userName;
+        this.userImagePath = userImagePath;
+    }
+
     public User(String userUUID, String userName, String userMail, String userPassword, String userImagePath, String userActivityState, String userCustomState, String userCreatedAt, String userToken){
         this.userUUID = userUUID;
         this.userName = userName;

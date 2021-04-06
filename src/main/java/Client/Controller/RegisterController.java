@@ -2,7 +2,7 @@ package Client.Controller;
 
 import Client.DataHandler.UserLoader;
 import Client.ServerHandler.UserService;
-import Client.ServerHandler.Util;
+import Client.Util.Util;
 import Client.View.ChatView;
 import Client.View.LoginView;
 import Client.View.MainFrame;

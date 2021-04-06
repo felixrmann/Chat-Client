@@ -1,7 +1,7 @@
 package Client.View;
 
 import Client.Controller.RegisterController;
-import Client.ServerHandler.Util;
+import Client.Util.Util;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

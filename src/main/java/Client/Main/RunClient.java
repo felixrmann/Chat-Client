@@ -2,6 +2,8 @@ package Client.Main;
 
 import Client.DataHandler.UserLoader;
 import Client.Model.Chat;
+import Client.Model.Message;
+import Client.Model.User;
 import Client.ServerHandler.ChatService;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,19 +25,29 @@ public class RunClient {
         try {
             UserLoader userLoader = new UserLoader();
 
-            JSONObject jsonObject = new JSONObject(ChatService.loadChats(userLoader.loadUser().getuserToken()).body().string());
+            String jsonString = ChatService.loadChats(userLoader.loadUser().getuserToken()).body().string();
+            JSONObject jsonObject = new JSONObject(jsonString);
+            System.out.println(jsonString);
             JSONArray array = jsonObject.getJSONArray("chats");
 
             Vector<Chat> chats = new Vector<>();
 
             for (int i = 0; i < array.length(); i++) {
-                JSONObject o = array.getJSONObject(i);
-                chats.add(new Chat(o.optString("id"), o.optString("name"), o.optInt("type"), o.optString("imagePath")));
+                JSONObject chatObj = array.getJSONObject(i);
+                JSONObject messageObj = array.getJSONObject(i).getJSONObject("message");
+                User author = null;
+                if (messageObj.has("author")) {
+                    JSONObject authorObj = messageObj.getJSONObject("author");
+                    author = new User(authorObj.getString("id"), authorObj.getString("username"), authorObj.getString("avatar"));
+                }
+                Message lastMessage = new Message(messageObj.optString("id"), messageObj.optString("content"), messageObj.optString("date"), author);
+                chats.add(new Chat(chatObj.optString("id"), chatObj.optString("name"), chatObj.optInt("type"), chatObj.optString("imagePath"), lastMessage));
             }
 
 
             for (Chat chat : chats) {
                 System.out.println(chat.getChatName());
+                System.out.println(chat.getLastMessage().getMessageContent());
             }
 
         } catch (JSONException e) {

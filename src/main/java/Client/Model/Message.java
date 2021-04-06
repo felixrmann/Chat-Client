@@ -12,9 +12,17 @@ public class Message {
 
     private String messageUUID;
     private String messageContent;
-    private String messageCreationDate;
+    private String messageDate;
     private String messageAuthorUUID;
     private String messageChatUUID;
+    private User author;
+
+    public Message(String messageUUID, String messageContent, String messageDate, User author){
+        this.messageUUID = messageUUID;
+        this.messageContent = messageContent;
+        this.messageDate = messageDate;
+        this.author = author;
+    }
 
     public Message(String messageContent, String messageAuthorUUID, String messageChatUUID){
         this.messageContent = messageContent;
@@ -22,13 +30,13 @@ public class Message {
         this.messageChatUUID = messageChatUUID;
 
         messageUUID = UUID.randomUUID().toString();
-        messageCreationDate = String.valueOf(System.currentTimeMillis());
+        messageDate = String.valueOf(System.currentTimeMillis());
     }
 
     public Message(String messageUUID, String messageContent, String messageCreationDate, String messageAuthorUUID, String messageChatUUID){
         this.messageUUID = messageUUID;
         this.messageContent = messageContent;
-        this.messageCreationDate = messageCreationDate;
+        this.messageDate = messageCreationDate;
         this.messageAuthorUUID = messageAuthorUUID;
         this.messageChatUUID = messageChatUUID;
     }
@@ -42,7 +50,7 @@ public class Message {
     }
 
     public String getMessageCreationDate() {
-        return messageCreationDate;
+        return messageDate;
     }
 
     public String getMessageAuthorUUID() {
@@ -61,8 +69,8 @@ public class Message {
         this.messageContent = messageContent;
     }
 
-    public void setMessageCreationDate(String messageCreationDate) {
-        this.messageCreationDate = messageCreationDate;
+    public void setMessageCreationDate(String messageDate) {
+        this.messageDate = messageDate;
     }
 
     public void setMessageAuthorUUID(String messageAuthorUUID) {

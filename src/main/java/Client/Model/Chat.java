@@ -16,14 +16,16 @@ public class Chat {
     private String chatImagePath;
     private String chatCreatedAt;
     private ChatType chatType;
+    private Message lastMessage;
 
     public Chat(){}
 
-    public Chat(String chatUUID, String chatName, int chatType, String chatImagePath){
+    public Chat(String chatUUID, String chatName, int chatType, String chatImagePath, Message lastMessage){
         this.chatUUID = chatUUID;
         this.chatName = chatName;
         this.chatType = ChatType.getChatType(chatType);
         this.chatImagePath = chatImagePath;
+        this.lastMessage = lastMessage;
     }
 
     public Chat (String chatName, ChatType chatType){
@@ -89,5 +91,13 @@ public class Chat {
 
     public String  getChatType() {
         return chatType.getChatType();
+    }
+
+    public void setLastMessage(Message lastMessage) {
+        this.lastMessage = lastMessage;
+    }
+
+    public Message getLastMessage() {
+        return lastMessage;
     }
 }

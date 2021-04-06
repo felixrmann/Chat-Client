@@ -1,6 +1,6 @@
 package Client.View;
 
-import Client.ServerHandler.Util;
+import Client.Util.Util;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
