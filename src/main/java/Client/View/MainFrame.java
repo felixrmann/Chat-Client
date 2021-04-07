@@ -42,11 +42,8 @@ public class MainFrame extends Application {
     public void init(Stage primaryStage) {
         window = primaryStage;
 
-
         mainScene = new Scene(new ChatView(this));
         Util.loadStylesheet(mainScene);
-
-
 
         /*
         StartView startView = new StartView(this);
@@ -72,6 +69,7 @@ public class MainFrame extends Application {
     public void setNewScene(BorderPane borderPane, double width, double height) {
         Scene scene = new Scene(borderPane, width, height);
         Util.loadStylesheet(scene);
+        mainScene = scene;
         window.setScene(scene);
         window.centerOnScreen();
     }
@@ -106,34 +104,46 @@ public class MainFrame extends Application {
 
     /**
      * toggles the resizability of the window
+     *
      * @param resizable
      */
-    public void setResizable(boolean resizable){
+    public void setResizable(boolean resizable) {
         window.setResizable(resizable);
     }
 
     /**
      * makes the window max-sized
      */
-    public void setMaxSize(){
+    public void setMaxSize() {
         window.setMaximized(true);
     }
 
     /**
      * sets minimum height and with of window
+     *
      * @param height
      * @param width
      */
-    public void setMinSize(double width, double height){
+    public void setMinSize(double width, double height) {
         window.setMinWidth(width);
         window.setMinHeight(height);
     }
 
     /**
      * sets Name of window
+     *
      * @param stageName
      */
-    public void setStageName(String stageName){
+    public void setStageName(String stageName) {
         window.setTitle(stageName);
+    }
+
+    /**
+     * returns window
+     *
+     * @return window
+     */
+    public Stage getWindow() {
+        return window;
     }
 }

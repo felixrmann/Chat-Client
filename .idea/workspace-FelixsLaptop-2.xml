@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f875573f-7067-4da3-b0c7-3138bc74ab0d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Client/Model/LoadChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chat-Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Chat-Client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/Main/RunClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Main/RunClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/Model/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Model/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/Model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Model/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/View/ChatView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/View/ChatView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/View/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/View/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/View/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/View/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/View/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/View/RegisterView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/View/StartView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/View/StartView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/darkStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/darkStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lightStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lightStyle.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="module-info" />
+        <option value="CSS File" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1p3nSShn1aXRMdQVIrJo4oScxT5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Felix\OneDrive\Felix\Privat\Programmieren\Chat-Client\src\main\resources" />
+      <recent name="C:\Users\Felix\OneDrive\Felix\Privat\Programmieren\Chat-Client\src\Client\Model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Felix\OneDrive\Felix\Privat\Programmieren\Chat-Client\src\main\resources\images" />
+      <recent name="C:\Users\Felix\OneDrive\Felix\Privat\Programmieren\Chat-Client\src\main\resources\DATA" />
+      <recent name="C:\Users\Felix\OneDrive\Felix\Privat\Programmieren\Chat-Client\src\main\resources\fxml" />
+      <recent name="C:\Users\Felix\OneDrive\Felix\Privat\Programmieren\Chat-Client\src\main\java\Client\View" />
+      <recent name="C:\Users\Felix\OneDrive\Felix\Privat\Programmieren\Chat-Client\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Client.Model" />
+      <recent name="Client.View" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.RunClient">
+    <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client.View.MainFrame" />
+      <module name="Chat-Client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Client.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client.Main.RunClient" />
+      <module name="Chat-Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.RunClient" />
+      <item itemvalue="Application.MainFrame" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RunClient" />
+        <item itemvalue="Application.MainFrame" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f875573f-7067-4da3-b0c7-3138bc74ab0d" name="Default Changelist" comment="" />
+      <created>1614420643770</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614420643770</updated>
+      <workItem from="1614420645015" duration="4413000" />
+      <workItem from="1614439581272" duration="9819000" />
+      <workItem from="1614592782980" duration="9754000" />
+      <workItem from="1614672466347" duration="87000" />
+      <workItem from="1614674398932" duration="628000" />
+      <workItem from="1614696515835" duration="791000" />
+      <workItem from="1616752654230" duration="4369000" />
+      <workItem from="1616938081371" duration="27000" />
+      <workItem from="1617000517178" duration="874000" />
+      <workItem from="1617007099682" duration="8955000" />
+      <workItem from="1617028146904" duration="117000" />
+      <workItem from="1617028349624" duration="5460000" />
+      <workItem from="1617033892322" duration="167000" />
+      <workItem from="1617084250981" duration="7067000" />
+      <workItem from="1617098663162" duration="2817000" />
+      <workItem from="1617105121401" duration="19524000" />
+      <workItem from="1617255850952" duration="2578000" />
+      <workItem from="1617279687506" duration="57602000" />
+      <workItem from="1617652177261" duration="91000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1617034037732</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1617034037732</updated>
+    </task>
+    <task id="LOCAL-00002" summary="removed users.json">
+      <created>1617087361211</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617087361211</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added comments&#10;working on DataHandler.java to load data from json file">
+      <created>1617103705430</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617103705430</updated>
+    </task>
+    <task id="LOCAL-00004" summary="updated module Info to work with gson library">
+      <created>1617104261387</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617104261387</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added LoadUser.java&#10;removed TestUser.java">
+      <created>1617105434274</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1617105434274</updated>
+    </task>
+    <task id="LOCAL-00006" summary="updated documentation in DataHandler.java and MainFrame.java">
+      <created>1617130015869</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617130015869</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- start of LoginView and LoginController">
+      <created>1617186759105</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617186759105</updated>
+    </task>
+    <task id="LOCAL-00008" summary="-working on LoginView">
+      <created>1617193281565</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617193281565</updated>
+    </task>
+    <task id="LOCAL-00009" summary="-working on LoginView">
+      <created>1617222882049</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617222882049</updated>
+    </task>
+    <task id="LOCAL-00010" summary="-working on LoginView">
+      <created>1617269946698</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617269946698</updated>
+    </task>
+    <task id="LOCAL-00011" summary="- left side done&#10;- now working on right side">
+      <created>1617307437956</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1617307437956</updated>
+    </task>
+    <task id="LOCAL-00012" summary="- loginview done &#10;- working on LoginController, the backend of the LoginView">
+      <created>1617310510955</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1617310510955</updated>
+    </task>
+    <task id="LOCAL-00013" summary="- LoginController done just need to connect the next views">
+      <created>1617354069912</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1617354069912</updated>
+    </task>
+    <task id="LOCAL-00014" summary="- made the Util class the most important class important class in the whole program by assigning many important but often used classes to it&#10;- adjusted the theme of the ConfirmView as the whole project">
+      <created>1617356095598</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1617356095598</updated>
+    </task>
+    <task id="LOCAL-00015" summary="- done with RegisterView&#10;- now working on backend">
+      <created>1617366722941</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617366722941</updated>
+    </task>
+    <task id="LOCAL-00016" summary="- register done&#10;- working on minor optimizations and starting to work on the chatView">
+      <created>1617373601520</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1617373601520</updated>
+    </task>
+    <task id="LOCAL-00017" summary="- working on autologin">
+      <created>1617378182593</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1617378182593</updated>
+    </task>
+    <task id="LOCAL-00018" summary="- autologin implemented">
+      <created>1617380792244</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1617380792244</updated>
+    </task>
+    <task id="LOCAL-00019" summary="- working on startup of app">
+      <created>1617492184966</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1617492184966</updated>
+    </task>
+    <task id="LOCAL-00020" summary="- finished autologin with start-screen&#10;- working on automatically saving information when login in and registering">
+      <created>1617540278701</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1617540278701</updated>
+    </task>
+    <task id="LOCAL-00021" summary="- started to work on chatView">
+      <created>1617625331339</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1617625331339</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="removed users.json" />
+    <MESSAGE value="added comments&#10;working on DataHandler.java to load data from json file" />
+    <MESSAGE value="updated module Info to work with gson library" />
+    <MESSAGE value="added LoadUser.java&#10;removed TestUser.java" />
+    <MESSAGE value="updated documentation in DataHandler.java and MainFrame.java" />
+    <MESSAGE value="- start of LoginView and LoginController" />
+    <MESSAGE value="-working on LoginView" />
+    <MESSAGE value="- left side done&#10;- now working on right side" />
+    <MESSAGE value="- loginview done &#10;- working on LoginController, the backend of the LoginView" />
+    <MESSAGE value="- LoginController done just need to connect the next views" />
+    <MESSAGE value="- made the Util class the most important class important class in the whole program by assigning many important but often used classes to it&#10;- adjusted the theme of the ConfirmView as the whole project" />
+    <MESSAGE value="- done with RegisterView&#10;- now working on backend" />
+    <MESSAGE value="- register done&#10;- working on minor optimizations and starting to work on the chatView" />
+    <MESSAGE value="- working on autologin" />
+    <MESSAGE value="- autologin implemented" />
+    <MESSAGE value="- working on startup of app" />
+    <MESSAGE value="- finished autologin with start-screen&#10;- working on automatically saving information when login in and registering" />
+    <MESSAGE value="- started to work on chatView" />
+    <option name="LAST_COMMIT_MESSAGE" value="- started to work on chatView" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Chat_Client$DataHandler.ic" NAME="DataHandler Coverage Results" MODIFIED="1614525075460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Client.DataHandler.*</FILTER>
+    </SUITE>
+  </component>
+</project>
