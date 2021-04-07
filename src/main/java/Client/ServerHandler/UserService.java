@@ -44,4 +44,13 @@ public class UserService {
         return Util.executeServerRequest(request);
     }
 
+    public static Response getUserDataByToken(String userToken){
+        Request request = new Request.Builder()
+                .url(ConfigLoader.loadConfig().getBaseURL() + "users/me")
+                .header("Authorization", userToken)
+                .build();
+
+        return Util.executeServerRequest(request);
+    }
+
 }

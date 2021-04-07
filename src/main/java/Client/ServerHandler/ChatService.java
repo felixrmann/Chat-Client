@@ -21,5 +21,4 @@ public class ChatService {
 
         return Util.executeServerRequest(request);
     }
-
 }

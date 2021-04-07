@@ -1,16 +1,14 @@
 package Client.Main;
 
+import Client.DataHandler.ConfigLoader;
 import Client.DataHandler.UserLoader;
-import Client.Model.Chat;
-import Client.Model.Message;
-import Client.Model.User;
-import Client.ServerHandler.ChatService;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import Client.Util.Util;
+import okhttp3.FormBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import java.io.IOException;
-import java.util.Vector;
 
 /**
  * @author Felix Mann
@@ -22,6 +20,28 @@ public class RunClient {
 
     public static void main(String[] args) throws IOException {
 
+        try {
+            UserLoader userLoader = new UserLoader();
+
+            RequestBody bodyParams = new FormBody.Builder()
+                    .add("chat_name", "chat4")
+                    .add("chat_type", "0")
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(ConfigLoader.loadConfig().getBaseURL() + "chats")
+                    .header("Authorization", userLoader.loadUser().getuserToken())
+                    .post(bodyParams)
+                    .build();
+
+            Response response = Util.executeServerRequest(request);
+            String stringResponse = response.body().string();
+            System.out.println(stringResponse);
+        } catch (RuntimeException ignored) {}
+
+        System.exit(0);
+
+        /*
         try {
             UserLoader userLoader = new UserLoader();
 
@@ -54,7 +74,7 @@ public class RunClient {
             e.printStackTrace();
         }
 
-        System.exit(0);
+         */
 
         /*
         UserLoader userLoader = new UserLoader();
@@ -201,10 +221,11 @@ public class RunClient {
 
          */
     }
+
     class Token {
         private String token;
 
-        public Token(String token){
+        public Token(String token) {
             this.token = token;
         }
 

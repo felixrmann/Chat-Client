@@ -53,9 +53,8 @@ public class MainFrame extends Application {
         PauseTransition delay = new PauseTransition(Duration.millis(Math.random() * (2000 - 1000) + 1000));
         delay.setOnFinished(event -> startView.execute());
         delay.play();
-
+        
          */
-
 
     }
 
@@ -79,8 +78,10 @@ public class MainFrame extends Application {
      */
     public void closeProgram() {
         boolean answer = ConfirmView.display("Exit", "Do you want to exit the program?");
-        if (answer) window.close();
-        System.exit(0);
+        if (answer) {
+            window.close();
+            System.exit(0);
+        }
     }
 
     /**
