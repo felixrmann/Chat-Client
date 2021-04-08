@@ -55,6 +55,8 @@ public class ConfigLoader {
             Map<String, String> map = new HashMap<>();
             map.put("mode", config.getMode());
             map.put("baseURL", config.getBaseURL());
+            map.put("windowHeight", String.valueOf(config.getWindowHeight()));
+            map.put("windowWidth", String.valueOf(config.getWindowWidth()));
 
             Writer writer = new FileWriter(filePath);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

@@ -1,6 +1,8 @@
 package Client.Controller;
 
+import Client.DataHandler.ConfigLoader;
 import Client.DataHandler.UserLoader;
+import Client.Model.Config;
 import Client.Model.User;
 import Client.ServerHandler.ChatService;
 import Client.View.ChatView;
@@ -29,7 +31,12 @@ public class StartController {
         if (user.getuserToken() != null){
             Response response = ChatService.loadChats(user.getuserToken());
             if (response.code() == 200) {
-                mainFrame.setNewScene(new ChatView(mainFrame), 800, 800);
+                Config config = ConfigLoader.loadConfig();
+                if (config.getWindowHeight() != 0 && config.getWindowWidth() != 0){
+                    mainFrame.setNewScene(new ChatView(mainFrame), config.getWindowWidth(), config.getWindowHeight());
+                } else {
+                    mainFrame.setNewScene(new ChatView(mainFrame), 1000, 750);
+                }
             } else {
                 mainFrame.setNewScene(new LoginView(mainFrame), 720, 400);
             }

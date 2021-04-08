@@ -11,6 +11,8 @@ import Client.DataHandler.ConfigLoader;
  */
 public class Config {
     private String mode;
+    private int windowHeight;
+    private int windowWidth;
     private final String baseURL;
 
     /**
@@ -48,5 +50,41 @@ public class Config {
      */
     public String getBaseURL() {
         return baseURL;
+    }
+
+    /**
+     * Gets window height.
+     *
+     * @return the window height
+     */
+    public int getWindowHeight() {
+        return windowHeight;
+    }
+
+    /**
+     * Gets window width.
+     *
+     * @return the window width
+     */
+    public int getWindowWidth() {
+        return windowWidth;
+    }
+
+    /**
+     * Sets window height.
+     *
+     * @param windowHeight the window height
+     */
+    public void setWindowHeight(int windowHeight) {
+        this.windowHeight = windowHeight;
+    }
+
+    /**
+     * Sets window width.
+     *
+     * @param windowWidth the window width
+     */
+    public void setWindowWidth(int windowWidth) {
+        this.windowWidth = windowWidth;
     }
 }

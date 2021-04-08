@@ -1,9 +1,12 @@
 package Client.View;
 
+import Client.DataHandler.ConfigLoader;
 import Client.Model.Chat;
+import Client.Model.Config;
 import Client.Model.User;
 import Client.Util.ChatUtil;
 import Client.Util.UserUtil;
+import Client.Util.Util;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,8 +17,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 
 import java.awt.*;
 import java.io.FileInputStream;
@@ -49,7 +52,12 @@ public class ChatView extends BorderPane {
         getStyleClass().add("chat");
         mainFrame.setStageName("Chat");
         mainFrame.setResizable(true);
-        mainFrame.setMaxSize();
+        Config config = ConfigLoader.loadConfig();
+        if (config.getWindowHeight() != 0 && config.getWindowWidth() != 0){
+            mainFrame.setWindowSize(config.getWindowWidth(), config.getWindowHeight());
+        } else {
+            mainFrame.setWindowSize(1500, 1000);
+        }
         mainFrame.setMinSize(700, 500);
 
         mainGridPane = new GridPane();
@@ -64,6 +72,7 @@ public class ChatView extends BorderPane {
         setCenter(mainGridPane);
 
         mainGridPane.setPadding(new Insets(10,10,10,10));
+        mainGridPane.requestFocus();
         mainGridPane.add(chatListView(), 0,0);
     }
 
@@ -73,6 +82,8 @@ public class ChatView extends BorderPane {
         if (allChats != null) {
             ObservableList<Chat> allChatList = FXCollections.observableList(allChats);
             listView.setItems(allChatList);
+            //TODO handle if user has no chats (direct user to creation of chat)
+            listView.getSelectionModel().select(0);
             listView.setOnMouseClicked(mouseEvent -> {
                 System.out.println(allChatList.get(listView.getSelectionModel().getSelectedIndex()).getChatName());
             });
@@ -85,15 +96,24 @@ public class ChatView extends BorderPane {
         listBorderPane.setCenter(listView);
 
         BorderPane botBorderPane = new BorderPane();
-        Label nameLabel = new Label();
-        Label settingsLabel = new Label();
+        botBorderPane.setPadding(new Insets(10,10,10,10));
 
-        //TODO set userImg
-        //botBorderPane.setLeft();
+        try {
+            Label userImgLabel = new Label();
+            Image img = new Image(new FileInputStream("src\\main\\resources\\images\\defaultUser.png"));
+            ImageView view = new ImageView(img);
+            view.setFitHeight(50);
+            view.setPreserveRatio(true);
+            userImgLabel.setGraphic(view);
+            botBorderPane.setLeft(userImgLabel);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         Label userNameLabel = new Label();
-        User currentUser = null;
-        currentUser = UserUtil.loadUserData();
+        userNameLabel.setFont(new Font("Arial", 25));
+        Util.setColor(userNameLabel);
+        User currentUser = UserUtil.loadUserData();
         if (currentUser != null) {
             userNameLabel.setText(currentUser.getUserName());
         }
@@ -134,9 +154,8 @@ public class ChatView extends BorderPane {
             borderPane.setPrefHeight(50);
             borderPane.setPrefWidth(100);
 
-            /*
             try {
-                Image img = new Image(new FileInputStream("src\\main\\resources\\images\\default.png"));
+                Image img = new Image(new FileInputStream("src\\main\\resources\\images\\defaultChat.png"));
                 ImageView view = new ImageView(img);
                 view.setFitHeight(50);
                 view.setPreserveRatio(true);
@@ -145,7 +164,7 @@ public class ChatView extends BorderPane {
                 e.printStackTrace();
             }
 
-             */
+
             borderPane.setLeft(chatImgLabel);
             borderPane.setCenter(centerPane);
             borderPane.setRight(datePane);

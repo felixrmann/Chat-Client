@@ -68,11 +68,6 @@ public class StartView extends BorderPane {
     }
 
     public void execute(){
-        try {
-            Thread.sleep(500);
-            startController.setUpProject();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        startController.setUpProject();
     }
 }

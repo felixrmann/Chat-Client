@@ -25,6 +25,8 @@ import java.util.Map;
 
 public class UserLoader {
 
+    //TODO make only one UserLoader in project
+
     private final static Logger LOGGER = LoggerFactory.getLogger(UserLoader.class);
     private final static String fileName = "users.json";
     private final static String filePath = "src\\main\\resources\\DATA\\" + fileName;

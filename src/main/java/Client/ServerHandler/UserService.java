@@ -14,6 +14,8 @@ import okhttp3.Response;
 
 public class UserService {
 
+    private static final String BASE_URL = ConfigLoader.loadConfig().getBaseURL() + "users";
+
     public static Response loginUser(String username, String password){
         FormBody data = new FormBody.Builder()
                 .add("username", username)
@@ -21,7 +23,7 @@ public class UserService {
                 .build();
 
         Request request = new Request.Builder()
-                .url(ConfigLoader.loadConfig().getBaseURL() + "users/login")
+                .url(BASE_URL + "/login")
                 .post(data)
                 .build();
 
@@ -37,7 +39,7 @@ public class UserService {
                 .build();
 
         Request request = new Request.Builder()
-                .url(ConfigLoader.loadConfig().getBaseURL() + "users/register")
+                .url(BASE_URL + "/register")
                 .post(data)
                 .build();
 
@@ -46,7 +48,7 @@ public class UserService {
 
     public static Response getUserDataByToken(String userToken){
         Request request = new Request.Builder()
-                .url(ConfigLoader.loadConfig().getBaseURL() + "users/me")
+                .url(BASE_URL + "/me")
                 .header("Authorization", userToken)
                 .build();
 

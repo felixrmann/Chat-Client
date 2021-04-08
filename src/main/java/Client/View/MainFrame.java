@@ -1,10 +1,14 @@
 package Client.View;
 
+import Client.DataHandler.ConfigLoader;
+import Client.Model.Config;
 import Client.Util.Util;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * @author Felix Mann
@@ -42,10 +46,11 @@ public class MainFrame extends Application {
     public void init(Stage primaryStage) {
         window = primaryStage;
 
+        /*
         mainScene = new Scene(new ChatView(this));
         Util.loadStylesheet(mainScene);
+         */
 
-        /*
         StartView startView = new StartView(this);
         mainScene = new Scene(startView, 400, 350);
         Util.loadStylesheet(mainScene);
@@ -53,9 +58,6 @@ public class MainFrame extends Application {
         PauseTransition delay = new PauseTransition(Duration.millis(Math.random() * (2000 - 1000) + 1000));
         delay.setOnFinished(event -> startView.execute());
         delay.play();
-        
-         */
-
     }
 
     /**
@@ -80,6 +82,10 @@ public class MainFrame extends Application {
         boolean answer = ConfirmView.display("Exit", "Do you want to exit the program?");
         if (answer) {
             window.close();
+            Config exitConfig = ConfigLoader.loadConfig();
+            exitConfig.setWindowHeight((int) window.getHeight());
+            exitConfig.setWindowWidth((int) window.getWidth());
+            ConfigLoader.saveConfig(exitConfig);
             System.exit(0);
         }
     }
@@ -115,8 +121,19 @@ public class MainFrame extends Application {
     /**
      * makes the window max-sized
      */
-    public void setMaxSize() {
+    public void resizeToMaxSize() {
         window.setMaximized(true);
+    }
+
+    /**
+     * sets the height and width of the window
+     *
+     * @param width
+     * @param height
+     */
+    public void setWindowSize(double width, double height){
+        window.setWidth(width);
+        window.setHeight(height);
     }
 
     /**
