@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -26,23 +27,26 @@ public class ConfirmView {
     private static String text;
 
     /**
-     * Display boolean.
+     * Displays the window
      *
      * @param title the title
      * @param text  the text
      * @return the boolean
      */
-    public static boolean display(String title, String text){
+    public static boolean display(MainFrame mainFrame, String title, String text){
         ConfirmView.text = text;
 
         init();
 
         //TODO set icon
+        window.initOwner(mainFrame.getStage());
+        window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
         Scene scene = new Scene(windowContent(), 250, 100);
         Util.loadStylesheet(scene);
         window.setScene(scene);
         window.setAlwaysOnTop(true);
+        //TODO show above the main window (position)
         window.centerOnScreen();
         window.showAndWait();
 

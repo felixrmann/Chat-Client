@@ -2,7 +2,6 @@ package Client.ServerHandler;
 
 import Client.DataHandler.ConfigLoader;
 import Client.DataHandler.UserLoader;
-import Client.Model.ChatType;
 import Client.Util.Util;
 import okhttp3.FormBody;
 import okhttp3.Request;
@@ -43,12 +42,12 @@ public class ChatService {
      * @param chatType the chat type
      * @return the response
      */
-    public static Response createChat(String chatName, ChatType chatType){
+    public static Response createChat(String chatName, int chatType){
         UserLoader userLoader = new UserLoader();
 
         RequestBody bodyParams = new FormBody.Builder()
                 .add("chat_name", chatName)
-                .add("chat_type", chatType.getChatType())
+                .add("chat_type", String.valueOf(chatType))
                 .build();
 
         Request request = new Request.Builder()

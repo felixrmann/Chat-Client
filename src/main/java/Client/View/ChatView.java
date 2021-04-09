@@ -1,12 +1,12 @@
 package Client.View;
 
+import Client.Controller.ChatController;
 import Client.DataHandler.ConfigLoader;
 import Client.Model.Chat;
 import Client.Model.Config;
 import Client.Model.User;
 import Client.Util.ChatUtil;
 import Client.Util.UserUtil;
-import Client.Util.Util;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +17,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
 import java.awt.*;
@@ -36,10 +37,13 @@ import java.util.Vector;
 public class ChatView extends BorderPane {
 
     private final MainFrame mainFrame;
+    private ChatController chatController;
     private GridPane mainGridPane;
+    private BorderPane listBorderPane;
     private ListView<Chat> listView;
-    private Button settingsButton;
+    private Button addChatButton, settingsButton;
     private int screenWidth, screenHeight;
+    private Vector<Button> buttons;
     private Vector<Chat> allChats;
 
     public ChatView(MainFrame mainFrame){
@@ -66,9 +70,19 @@ public class ChatView extends BorderPane {
         mainFrame.setMinSize(700, 500);
 
         mainGridPane = new GridPane();
+        listBorderPane = new BorderPane();
         listView = new ListView<>();
+        addChatButton = new Button();
         settingsButton = new Button();
         allChats = ChatUtil.loadAllChats();
+        buttons = new Vector<>();
+        chatController = new ChatController(mainFrame, this, buttons);
+
+        buttons.add(addChatButton);
+        buttons.add(settingsButton);
+
+        addChatButton.setOnAction(chatController);
+        settingsButton.setOnAction(chatController);
 
         initScreenSize();
     }
@@ -82,24 +96,11 @@ public class ChatView extends BorderPane {
     }
 
     private BorderPane chatListView(){
-        BorderPane listBorderPane = new BorderPane();
 
-        if (allChats != null) {
-            ObservableList<Chat> allChatList = FXCollections.observableList(allChats);
-            listView.setItems(allChatList);
-            //TODO handle if user has no chats (direct user to creation of chat)
-            listView.getSelectionModel().select(0);
-            listView.setOnMouseClicked(mouseEvent -> System.out.println(allChatList.get(listView.getSelectionModel().getSelectedIndex()).getChatName()));
-            listView.setCellFactory(chatListView -> new ChatCell());
-            listView.prefHeightProperty().bind(Bindings.divide(mainFrame.getStage().heightProperty(), 0.1));
-            listView.prefWidthProperty().bind(Bindings.divide(mainFrame.getStage().widthProperty(), 3));
-            listView.setMaxWidth(400);
-        }
-
-        listBorderPane.setCenter(listView);
+        initListView(allChats);
 
         BorderPane botBorderPane = new BorderPane();
-        botBorderPane.setPadding(new Insets(10,10,10,10));
+        botBorderPane.setStyle("-fx-background-color: white");
 
         try {
             Label userImgLabel = new Label();
@@ -108,6 +109,7 @@ public class ChatView extends BorderPane {
             view.setFitHeight(50);
             view.setPreserveRatio(true);
             userImgLabel.setGraphic(view);
+            userImgLabel.setPadding(new Insets(5,0,0,5));
             botBorderPane.setLeft(userImgLabel);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -115,12 +117,25 @@ public class ChatView extends BorderPane {
 
         Label userNameLabel = new Label();
         userNameLabel.setFont(new Font("Arial", 25));
-        Util.setColor(userNameLabel);
         User currentUser = UserUtil.loadUserData();
         if (currentUser != null) {
             userNameLabel.setText(currentUser.getUserName());
         }
         botBorderPane.setCenter(userNameLabel);
+
+        GridPane botButtonGridPane = new GridPane();
+
+        try {
+            Image img = new Image(new FileInputStream("src\\main\\resources\\images\\addChat.png"));
+            ImageView view = new ImageView(img);
+            view.setFitHeight(50);
+            view.setPreserveRatio(true);
+            addChatButton.setGraphic(view);
+            addChatButton.setStyle("-fx-background-color: transparent");
+            botButtonGridPane.add(addChatButton,0,0);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         try {
             Image img = new Image(new FileInputStream("src\\main\\resources\\images\\settings.png"));
@@ -129,10 +144,12 @@ public class ChatView extends BorderPane {
             view.setPreserveRatio(true);
             settingsButton.setGraphic(view);
             settingsButton.setStyle("-fx-background-color: transparent");
-            botBorderPane.setRight(settingsButton);
+            botButtonGridPane.add(settingsButton,1,0);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        botBorderPane.setRight(botButtonGridPane);
 
         listBorderPane.setBottom(botBorderPane);
 
@@ -198,5 +215,28 @@ public class ChatView extends BorderPane {
                 setGraphic(borderPane);
             }
         }
+    }
+
+    private void initListView(Vector<Chat> allChats){
+        if (allChats != null) {
+            ObservableList<Chat> allChatList = FXCollections.observableList(allChats);
+            listView.setItems(allChatList);
+            //TODO handle if user has no chats (direct user to creation of chat)
+            listView.getSelectionModel().select(0);
+            listView.setOnMouseClicked(mouseEvent -> {
+                System.out.println(allChatList.get(listView.getSelectionModel().getSelectedIndex()).getChatName());
+            });
+            listView.setCellFactory(chatListView -> new ChatCell());
+            listView.prefHeightProperty().bind(Bindings.divide(mainFrame.getStage().heightProperty(), 0.1));
+            listView.prefWidthProperty().bind(Bindings.divide(mainFrame.getStage().widthProperty(), 3));
+            listView.setMaxWidth(400);
+        }
+
+        listBorderPane.setCenter(listView);
+    }
+
+    public void updateChatList(){
+        allChats = null;
+        initListView(ChatUtil.loadAllChats());
     }
 }

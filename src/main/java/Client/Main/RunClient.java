@@ -1,14 +1,7 @@
 package Client.Main;
 
-import Client.DataHandler.ConfigLoader;
-import Client.DataHandler.UserLoader;
-import Client.Util.Util;
-import okhttp3.FormBody;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * @author Felix Mann
@@ -20,6 +13,11 @@ public class RunClient {
 
     public static void main(String[] args) throws IOException {
 
+        //Fri Apr 09 2021 15:33:25 GMT+0200 (Central European Summer Time)
+        Date date = new Date("Fri Apr 09 2021 15:33:25 GMT+0200 (Central European Summer Time)");
+        System.out.println(date.getTime());
+
+        /*
         try {
             UserLoader userLoader = new UserLoader();
 
@@ -40,6 +38,8 @@ public class RunClient {
         } catch (RuntimeException ignored) {}
 
         System.exit(0);
+
+         */
 
         /*
         try {

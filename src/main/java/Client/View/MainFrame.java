@@ -81,7 +81,7 @@ public class MainFrame extends Application {
      * handles the closing of the program
      */
     public void closeProgram() {
-        boolean answer = ConfirmView.display("Exit", "Do you want to exit the program?");
+        boolean answer = ConfirmView.display(this, "Exit", "Do you want to exit the program?");
         if (answer) {
             window.close();
             Config exitConfig = ConfigLoader.loadConfig();
@@ -159,16 +159,6 @@ public class MainFrame extends Application {
     public void setStageName(String stageName) {
         window.setTitle(stageName);
     }
-
-    /**
-     * returns window
-     *
-     * @return window window
-     */
-    public Stage getWindow() {
-        return window;
-    }
-
 
     /**
      * Set window position.

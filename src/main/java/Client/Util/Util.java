@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -107,6 +108,18 @@ public class Util {
             textField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: '374151'; -fx-text-inner-color: DarkGrey; -fx-background-color: '374151'");
         } else {
             textField.setStyle("-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-border-color: '9CA3AF'; -fx-text-inner-color: Black; -fx-background-color: '9CA3AF'");
+        }
+    }
+
+    /**
+     * sets theme of checkBox
+     * @param checkBox checkBox
+     */
+    public static void setCheckBox(CheckBox checkBox){
+        if (config.getMode().equals("dark")){
+            checkBox.setStyle("-fx-text-fill: LightGray");
+        } else {
+            checkBox.setStyle("-fx-text-fill: '1A2636'");
         }
     }
 }
