@@ -12,16 +12,23 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 /**
+ * The type Start view.
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-April-03
+ * @since 2021 - April - 03
  */
 
 public class StartView extends BorderPane {
 
-    private MainFrame mainFrame;
+    private final MainFrame mainFrame;
     private StartController startController;
 
+    /**
+     * Instantiates a new Start view.
+     *
+     * @param mainFrame the main frame
+     */
     public StartView(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
 
@@ -30,6 +37,9 @@ public class StartView extends BorderPane {
         createPane();
     }
 
+    /**
+     * initializes all variables
+     */
     private void init() {
         mainFrame.setStageName("Connecting...");
         mainFrame.setResizable(false);
@@ -38,6 +48,9 @@ public class StartView extends BorderPane {
         startController = new StartController(mainFrame);
     }
 
+    /**
+     * creates the Pane
+     */
     private void createPane() {
         try {
             Label label = new Label();
@@ -67,6 +80,9 @@ public class StartView extends BorderPane {
         }
     }
 
+    /**
+     * sets up Project
+     */
     public void execute(){
         startController.setUpProject();
     }

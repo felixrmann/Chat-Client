@@ -18,20 +18,17 @@ import java.util.Vector;
  *
  * @author Felix Mann
  * @version 1.0
- * @since 2021 -März-26
+ * @since 2021 - March - 26
  */
+
 public class LoginView extends BorderPane {
 
-    private MainFrame mainFrame;
-    private LoginController loginController;
+    private final MainFrame mainFrame;
     private GridPane mainGridPane;
-    private Vector<Button> buttons;
-    private Vector<TextField> fields;
     private Button signUpButton, createAccountButton, forgotPasswordButton;
     private Label errorMsgLabel;
     private TextField userNameTextField;
     private PasswordField passwordTextField;
-    private final String className = "login";
 
     /**
      * Instantiates a new Login view.
@@ -54,12 +51,12 @@ public class LoginView extends BorderPane {
         getStyleClass().add("login");
         mainFrame.setStageName("Login");
         mainFrame.setResizable(false);
-        buttons = new Vector<>();
-        fields = new Vector<>();
+        Vector<Button> buttons = new Vector<>();
+        Vector<TextField> fields = new Vector<>();
 
         userNameTextField = new TextField();
         passwordTextField = new PasswordField();
-        loginController = new LoginController(mainFrame, this, buttons, fields);
+        LoginController loginController = new LoginController(mainFrame, this, buttons, fields);
         mainGridPane = new GridPane();
         mainGridPane.getStyleClass().add("login");
 
@@ -228,14 +225,5 @@ public class LoginView extends BorderPane {
      */
     public void setErrorMsgLabel(String errorMsg){
         errorMsgLabel.setText(errorMsg);
-    }
-
-    /**
-     * Gets class name.
-     *
-     * @return the class name
-     */
-    public String getClassName() {
-        return className;
     }
 }

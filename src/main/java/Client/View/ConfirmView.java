@@ -10,9 +10,11 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
+ * The class Confirm View
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2020-Dezember-11
+ * @since 2020 - December - 11
  */
 
 public class ConfirmView {
@@ -23,6 +25,13 @@ public class ConfirmView {
     private static Button noButton, yesButton;
     private static String text;
 
+    /**
+     * Display boolean.
+     *
+     * @param title the title
+     * @param text  the text
+     * @return the boolean
+     */
     public static boolean display(String title, String text){
         ConfirmView.text = text;
 
@@ -40,6 +49,9 @@ public class ConfirmView {
         return answer;
     }
 
+    /**
+     * initializes all variables
+     */
     private static void init() {
         window = new Stage();
         textLabel = new Label();
@@ -47,6 +59,10 @@ public class ConfirmView {
         yesButton = new Button();
     }
 
+    /**
+     * creates the windowContent
+     * @return borderPane
+     */
     private static BorderPane windowContent(){
         BorderPane borderPane = new BorderPane();
 
@@ -63,6 +79,10 @@ public class ConfirmView {
         return borderPane;
     }
 
+    /**
+     * creates the botPart
+     * @return borderPane
+     */
     private static BorderPane botPart() {
         BorderPane borderPane = new BorderPane();
 
@@ -77,6 +97,9 @@ public class ConfirmView {
         return borderPane;
     }
 
+    /**
+     * creates the buttonAction
+     */
     private static void buttonAction() {
         noButton.setOnAction(event -> {
             answer = false;

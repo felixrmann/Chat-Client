@@ -17,9 +17,11 @@ import okhttp3.Response;
 import java.io.IOException;
 
 /**
+ * The class Util
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-April-02
+ * @since 2021 - April - 02
  */
 
 public class Util {
@@ -31,7 +33,7 @@ public class Util {
 
     /**
      * executes server requests
-     * @param request
+     * @param request request
      * @return response
      */
     public static Response executeServerRequest(Request request){
@@ -46,7 +48,7 @@ public class Util {
 
     /**
      * saves errorMsg in Object
-     * @param responseString
+     * @param responseString responseString
      * @return ErrorMsg
      */
     public static OverErrorMsg extractErrorMsg(String responseString){
@@ -55,7 +57,7 @@ public class Util {
 
     /**
      * extracts the token from json
-     * @param responseString
+     * @param responseString responseString
      * @return userToken
      */
     public static String extractToken(String responseString){
@@ -64,7 +66,7 @@ public class Util {
 
     /**
      * loads the stylesheet according to the theme
-     * @param scene
+     * @param scene scene
      */
     public static void loadStylesheet(Scene scene){
         if (config.getMode().equals("light")){
@@ -76,7 +78,7 @@ public class Util {
 
     /**
      * sets color of nodes
-     * @param node
+     * @param node node
      */
     public static void setColor(Node node){
         if (config.getMode().equals("dark")){
@@ -88,7 +90,7 @@ public class Util {
 
     /**
      * sets colors of button
-     * @param button
+     * @param button button
      */
     public static void setButton(Button button){
         button.setStyle("-fx-border-color: '84CC16'; -fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-background-color: '84CC16'");
@@ -97,8 +99,8 @@ public class Util {
     }
 
     /**
-     * sets theme of textfield
-     * @param textField
+     * sets theme of textField
+     * @param textField textField
      */
     public static void setTextField(TextField textField){
         if (config.getMode().equals("dark")){

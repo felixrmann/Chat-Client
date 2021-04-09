@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Vector;
 
 /**
@@ -21,14 +22,14 @@ import java.util.Vector;
  *
  * @author Felix Mann
  * @version 1.0
- * @since 2021 -März-31
+ * @since 2021 - March - 31
  */
 public class LoginController implements EventHandler<ActionEvent> {
 
-    private MainFrame mainFrame;
-    private LoginView loginView;
-    private Vector<Button> buttons;
-    private Vector<TextField> fields;
+    private final MainFrame mainFrame;
+    private final LoginView loginView;
+    private final Vector<Button> buttons;
+    private final Vector<TextField> fields;
 
     /**
      * Instantiates a new Login controller.
@@ -47,7 +48,7 @@ public class LoginController implements EventHandler<ActionEvent> {
 
     /**
      * handles button presses
-     * @param event
+     * @param event button pressed
      */
     @Override
     public void handle(ActionEvent event) {
@@ -73,7 +74,7 @@ public class LoginController implements EventHandler<ActionEvent> {
                     case 200 -> {
                         try {
                             UserLoader userLoader = new UserLoader();
-                            userLoader.saveUser(Util.extractToken(response.body().string()));
+                            userLoader.saveUser(Util.extractToken(Objects.requireNonNull(response.body()).string()));
                             mainFrame.setNewScene(new ChatView(mainFrame), 800, 800, true);
                             loginView.setErrorMsgLabel("");
                         } catch (IOException e) {
@@ -82,7 +83,7 @@ public class LoginController implements EventHandler<ActionEvent> {
                     }
                     case 400, 401 -> {
                         try {
-                            loginView.setErrorMsgLabel(Util.extractErrorMsg(response.body().string()).getErrorMsg());
+                            loginView.setErrorMsgLabel(Util.extractErrorMsg(Objects.requireNonNull(response.body()).string()).getErrorMsg());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

@@ -18,14 +18,12 @@ import java.util.Vector;
  *
  * @author Felix Mann
  * @version 1.0
- * @since 2021 -April-02
+ * @since 2021 - April - 02
  */
+
 public class RegisterView extends BorderPane {
 
-    private MainFrame mainFrame;
-    private RegisterController registerController;
-    private Vector<Button> buttons;
-    private Vector<TextField> textFields;
+    private final MainFrame mainFrame;
     private Button registerButton, haveAccountButton;
     private TextField nameField, mailField;
     private PasswordField passwordField, confPasswordField;
@@ -50,8 +48,8 @@ public class RegisterView extends BorderPane {
         getStyleClass().add("register");
         mainFrame.setStageName("Register");
         mainFrame.setResizable(false);
-        buttons = new Vector<>();
-        textFields = new Vector<>();
+        Vector<Button> buttons = new Vector<>();
+        Vector<TextField> textFields = new Vector<>();
 
         registerButton = new Button();
         haveAccountButton = new Button();
@@ -60,7 +58,7 @@ public class RegisterView extends BorderPane {
         passwordField = new PasswordField();
         confPasswordField = new PasswordField();
         errorMsgLabel = new Label();
-        registerController = new RegisterController(mainFrame, this, buttons, textFields);
+        RegisterController registerController = new RegisterController(mainFrame, this, buttons, textFields);
 
         buttons.add(registerButton);
         buttons.add(haveAccountButton);
@@ -177,6 +175,10 @@ public class RegisterView extends BorderPane {
         registerInputPane.add(haveAccountButton,0,9);
     }
 
+    /**
+     * sets error Message Label
+     * @param errorMsg error message
+     */
     public void setErrorMsgLabel(String errorMsg){
         errorMsgLabel.setText(errorMsg);
     }

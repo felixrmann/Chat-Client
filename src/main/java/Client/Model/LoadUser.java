@@ -6,8 +6,9 @@ package Client.Model;
  *
  * @author Felix Mann
  * @version 1.0
- * @since 2021 -März-30
+ * @since 2021 - March - 30
  */
+
 public class LoadUser {
     private String userToken;
     private String token;

@@ -15,20 +15,18 @@ import javafx.util.Duration;
  *
  * @author Felix Mann
  * @version 1.0
- * @since 2021 -Februar-27
+ * @since 2021 - February - 27
  */
+
 public class MainFrame extends Application {
 
     Stage window;
-    /**
-     * The Main scene.
-     */
     Scene mainScene;
 
     /**
      * starts the program
      *
-     * @param primaryStage
+     * @param primaryStage primaryStage
      */
     @Override
     public void start(Stage primaryStage) {

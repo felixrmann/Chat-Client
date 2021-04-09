@@ -11,19 +11,28 @@ import Client.View.MainFrame;
 import okhttp3.Response;
 
 /**
+ * The type Start Controller
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-April-03
+ * @since 2021 - April - 03
  */
-
 public class StartController {
 
-    private MainFrame mainFrame;
+    private final MainFrame mainFrame;
 
+    /**
+     * Instantiates a new Start controller.
+     *
+     * @param mainFrame the main frame
+     */
     public StartController(MainFrame mainFrame){
         this.mainFrame = mainFrame;
     }
 
+    /**
+     * Set up project.
+     */
     public void setUpProject(){
         UserLoader userLoader = new UserLoader();
         User user = userLoader.loadUser();
@@ -44,5 +53,4 @@ public class StartController {
             mainFrame.setNewScene(new LoginView(mainFrame), 720, 400, true);
         }
     }
-
 }

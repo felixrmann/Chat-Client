@@ -26,14 +26,16 @@ import java.io.FileNotFoundException;
 import java.util.Vector;
 
 /**
+ * The class Chat View
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-Februar-27
+ * @since 2021 - February - 27
  */
 
 public class ChatView extends BorderPane {
 
-    private MainFrame mainFrame;
+    private final MainFrame mainFrame;
     private GridPane mainGridPane;
     private ListView<Chat> listView;
     private Button settingsButton;
@@ -87,9 +89,7 @@ public class ChatView extends BorderPane {
             listView.setItems(allChatList);
             //TODO handle if user has no chats (direct user to creation of chat)
             listView.getSelectionModel().select(0);
-            listView.setOnMouseClicked(mouseEvent -> {
-                System.out.println(allChatList.get(listView.getSelectionModel().getSelectedIndex()).getChatName());
-            });
+            listView.setOnMouseClicked(mouseEvent -> System.out.println(allChatList.get(listView.getSelectionModel().getSelectedIndex()).getChatName()));
             listView.setCellFactory(chatListView -> new ChatCell());
             listView.prefHeightProperty().bind(Bindings.divide(mainFrame.getStage().heightProperty(), 0.1));
             listView.prefWidthProperty().bind(Bindings.divide(mainFrame.getStage().widthProperty(), 3));

@@ -7,15 +7,24 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
+ * The class User Service
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-April-02
+ * @since 2021 -April-02
  */
 
 public class UserService {
 
     private static final String BASE_URL = ConfigLoader.loadConfig().getBaseURL() + "users";
 
+    /**
+     * Login user response.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the response
+     */
     public static Response loginUser(String username, String password){
         FormBody data = new FormBody.Builder()
                 .add("username", username)
@@ -30,6 +39,15 @@ public class UserService {
         return Util.executeServerRequest(request);
     }
 
+    /**
+     * Register user response.
+     *
+     * @param userName         the user name
+     * @param userMail         the user mail
+     * @param userPassword     the user password
+     * @param userConfPassword the user conf password
+     * @return the response
+     */
     public static Response registerUser(String userName, String userMail, String userPassword, String userConfPassword){
         FormBody data = new FormBody.Builder()
                 .add("username", userName)
@@ -46,6 +64,12 @@ public class UserService {
         return Util.executeServerRequest(request);
     }
 
+    /**
+     * Get user data by token response.
+     *
+     * @param userToken the user token
+     * @return the response
+     */
     public static Response getUserDataByToken(String userToken){
         Request request = new Request.Builder()
                 .url(BASE_URL + "/me")
@@ -54,5 +78,4 @@ public class UserService {
 
         return Util.executeServerRequest(request);
     }
-
 }

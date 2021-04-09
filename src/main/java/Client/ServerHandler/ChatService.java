@@ -10,15 +10,23 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
+ * The class Chat Service
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-April-04
+ * @since 2021 -April-04
  */
 
 public class ChatService {
 
     private static final String BASE_URL = ConfigLoader.loadConfig().getBaseURL() + "chats";
 
+    /**
+     * Load chats response.
+     *
+     * @param userToken the user token
+     * @return the response
+     */
     public static Response loadChats(String userToken){
         Request request = new Request.Builder()
                 .url(BASE_URL)
@@ -28,6 +36,13 @@ public class ChatService {
         return Util.executeServerRequest(request);
     }
 
+    /**
+     * Create chat response.
+     *
+     * @param chatName the chat name
+     * @param chatType the chat type
+     * @return the response
+     */
     public static Response createChat(String chatName, ChatType chatType){
         UserLoader userLoader = new UserLoader();
 

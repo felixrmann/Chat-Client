@@ -18,9 +18,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * The class User Loader
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-Februar-27
+ * @since 2021 - February - 27
  */
 
 public class UserLoader {
@@ -78,7 +80,7 @@ public class UserLoader {
 
     /**
      * saves the user in json file
-     * @param userToken
+     * @param userToken userToken
      */
     public void saveUser(String userToken){
         try {

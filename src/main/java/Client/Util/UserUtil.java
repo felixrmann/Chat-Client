@@ -9,17 +9,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Objects;
+
+/**
+ * The class User Util
+ *
+ * @author Felix Mann
+ * @version 1.0
+ * @since 2021 - March - 15
+ */
 
 public class UserUtil {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(UserUtil.class);
 
+    /**
+     * Load user data user.
+     *
+     * @return the user
+     */
     public static User loadUserData(){
         try {
             User userData = new User();
 
             UserLoader userLoader = new UserLoader();
-            JSONObject jsonObject = new JSONObject(UserService.getUserDataByToken(userLoader.loadUser().getuserToken()).body().string());
+            JSONObject jsonObject = new JSONObject(Objects.requireNonNull(UserService.getUserDataByToken(userLoader.loadUser().getuserToken()).body()).string());
 
             userData.setUserName(jsonObject.optString("username"));
             userData.setUserImagePath(jsonObject.optString("imagePath"));

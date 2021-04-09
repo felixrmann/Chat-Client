@@ -14,16 +14,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * The class Client Loader
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-April-01
+ * @since 2021 - April - 01
  */
 
 public class ConfigLoader {
 
     private final static String fileName = "config.json";
     private final static String filePath = "src\\main\\resources\\DATA\\" + fileName;
-    private static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
     /**
      * Loads the Data and saves them into an Object
@@ -48,7 +50,7 @@ public class ConfigLoader {
 
     /**
      * saves the config object in the config.json file
-     * @param config
+     * @param config config object
      */
     public static void saveConfig(Config config){
         try {

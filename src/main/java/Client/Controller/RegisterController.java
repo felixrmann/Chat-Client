@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Vector;
 
 /**
@@ -21,14 +22,14 @@ import java.util.Vector;
  *
  * @author Felix Mann
  * @version 1.0
- * @since 2021 -April-02
+ * @since 2021 - April - 02
  */
 public class RegisterController implements EventHandler<ActionEvent> {
 
-    private MainFrame mainFrame;
-    private RegisterView registerView;
-    private Vector<Button> buttons;
-    private Vector<TextField> fields;
+    private final MainFrame mainFrame;
+    private final RegisterView registerView;
+    private final Vector<Button> buttons;
+    private final Vector<TextField> fields;
 
     /**
      * Instantiates a new Register controller.
@@ -47,7 +48,7 @@ public class RegisterController implements EventHandler<ActionEvent> {
 
     /**
      * handles button presses
-     * @param event
+     * @param event button pressed
      */
     @Override
     public void handle(ActionEvent event) {
@@ -72,7 +73,7 @@ public class RegisterController implements EventHandler<ActionEvent> {
                         case 200 -> {
                             try {
                                 UserLoader userLoader = new UserLoader();
-                                userLoader.saveUser(Util.extractToken(response.body().string()));
+                                userLoader.saveUser(Util.extractToken(Objects.requireNonNull(response.body()).string()));
                                 mainFrame.setNewScene(new ChatView(mainFrame), 800, 800, true);
                                 registerView.setErrorMsgLabel("");
                             } catch (IOException e) {
@@ -81,7 +82,7 @@ public class RegisterController implements EventHandler<ActionEvent> {
                         }
                         case 400, 401, 500 -> {
                             try {
-                                registerView.setErrorMsgLabel(Util.extractErrorMsg(response.body().string()).getErrorMsg());
+                                registerView.setErrorMsgLabel(Util.extractErrorMsg(Objects.requireNonNull(response.body()).string()).getErrorMsg());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -103,7 +104,7 @@ public class RegisterController implements EventHandler<ActionEvent> {
     }
 
     /**
-     * returns the empty textfield
+     * returns the empty textField
      * @return empty field
      */
     private int allFieldsFilled(){

@@ -1,6 +1,15 @@
 package Client.Model;
 
+/**
+ * The enum Activity.
+ *
+ * @author Felix Mann
+ * @version 1.0
+ * @since 2021 - March - 31
+ */
+
 public enum Activity {
+
     OFFLINE (0),
     ONLINE (1),
     IDLE (2),
@@ -13,10 +22,20 @@ public enum Activity {
         this.activityInt = activityInt;
     }
 
+    /**
+     * Gets activity int.
+     *
+     * @return the activity int
+     */
     public int getActivityInt() {
         return activityInt;
     }
 
+    /**
+     * Get activity string.
+     *
+     * @return the string
+     */
     public String getActivity(){
         return switch (activityInt) {
             case 1 -> "Online";
@@ -27,6 +46,12 @@ public enum Activity {
         };
     }
 
+    /**
+     * Get activity activity.
+     *
+     * @param activityInt the activity int
+     * @return the activity
+     */
     public static Activity getActivity(int activityInt){
         return switch (activityInt){
             case 1 -> ONLINE;

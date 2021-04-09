@@ -12,18 +12,32 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Vector;
+
+/**
+ * The class Chat Util
+ *
+ * @author Felix Mann
+ * @version 1.0
+ * @since 2021 - March - 15
+ */
 
 public class ChatUtil {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ChatUtil.class);
 
+    /**
+     * Load all chats vector.
+     *
+     * @return the vector
+     */
     public static Vector<Chat> loadAllChats(){
         try {
             Vector<Chat> allChats = new Vector<>();
 
             UserLoader userLoader = new UserLoader();
-            JSONObject jsonObject = new JSONObject(ChatService.loadChats(userLoader.loadUser().getuserToken()).body().string());
+            JSONObject jsonObject = new JSONObject(Objects.requireNonNull(ChatService.loadChats(userLoader.loadUser().getuserToken()).body()).string());
 
             JSONArray array = jsonObject.getJSONArray("chats");
 
@@ -48,5 +62,4 @@ public class ChatUtil {
         }
         return null;
     }
-
 }

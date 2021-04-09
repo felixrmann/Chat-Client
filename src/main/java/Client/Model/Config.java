@@ -7,8 +7,9 @@ import Client.DataHandler.ConfigLoader;
  *
  * @author Felix Mann
  * @version 1.0
- * @since 2021 -April-01
+ * @since 2021 - April - 01
  */
+
 public class Config {
     private String mode;
     private int windowHeight;

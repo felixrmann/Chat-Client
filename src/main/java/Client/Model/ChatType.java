@@ -1,12 +1,15 @@
 package Client.Model;
 
 /**
+ * The enum ChatType
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-März-15
+ * @since 2021 - March - 15
  */
 
 public enum ChatType {
+
     DIRECTMESSAGE (0),
     GROUPCHAT (1);
 
@@ -16,10 +19,20 @@ public enum ChatType {
         this.chatInt = chatInt;
     }
 
+    /**
+     * Gets chat int.
+     *
+     * @return the chat int
+     */
     public int getChatInt() {
         return chatInt;
     }
 
+    /**
+     * Get chat type string.
+     *
+     * @return the string
+     */
     public String getChatType(){
         return switch (chatInt) {
             case 0 -> "D";
@@ -28,10 +41,14 @@ public enum ChatType {
         };
     }
 
+    /**
+     * Get chat type chat type.
+     *
+     * @param chatInt the chat int
+     * @return the chat type
+     */
     public static ChatType getChatType(int chatInt){
-        return switch (chatInt){
-            case 1 -> GROUPCHAT;
-            default -> DIRECTMESSAGE;
-        };
+        if (chatInt == 1) return GROUPCHAT;
+        else return DIRECTMESSAGE;
     }
 }
