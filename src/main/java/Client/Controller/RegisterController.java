@@ -54,7 +54,7 @@ public class RegisterController implements EventHandler<ActionEvent> {
         if (buttons.get(0).equals(event.getSource())){
             handleButton1();
         } else if (buttons.get(1).equals(event.getSource())){
-            mainFrame.setNewScene(new LoginView(mainFrame), 720, 400);
+            mainFrame.setNewScene(new LoginView(mainFrame), 720, 400, true);
         }
     }
 
@@ -73,7 +73,7 @@ public class RegisterController implements EventHandler<ActionEvent> {
                             try {
                                 UserLoader userLoader = new UserLoader();
                                 userLoader.saveUser(Util.extractToken(response.body().string()));
-                                mainFrame.setNewScene(new ChatView(mainFrame), 800, 800);
+                                mainFrame.setNewScene(new ChatView(mainFrame), 800, 800, true);
                                 registerView.setErrorMsgLabel("");
                             } catch (IOException e) {
                                 e.printStackTrace();

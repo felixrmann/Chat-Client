@@ -58,6 +58,9 @@ public class ChatView extends BorderPane {
         } else {
             mainFrame.setWindowSize(1500, 1000);
         }
+        if (config.getWindowPosY() != 0.0 && config.getWindowPosX() != 0.0){
+            mainFrame.setWindowPosition(config.getWindowPosY(), config.getWindowPosX());
+        }
         mainFrame.setMinSize(700, 500);
 
         mainGridPane = new GridPane();

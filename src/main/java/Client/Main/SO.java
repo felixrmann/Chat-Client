@@ -1,5 +1,7 @@
 package Client.Main;
 
+import Client.DataHandler.ConfigLoader;
+import Client.Model.Config;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -60,6 +62,9 @@ public class SO extends Application {
         });
         pane.getChildren().add(lv);
         primaryStage.show();
+        Config config = ConfigLoader.loadConfig();
+        primaryStage.setY(config.getWindowPosY());
+        primaryStage.setX(config.getWindowPosX());
     }
 
     public static void main(String[] args) {

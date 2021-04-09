@@ -13,6 +13,8 @@ public class Config {
     private String mode;
     private int windowHeight;
     private int windowWidth;
+    private String windowPosY;
+    private String windowPosX;
     private final String baseURL;
 
     /**
@@ -86,5 +88,41 @@ public class Config {
      */
     public void setWindowWidth(int windowWidth) {
         this.windowWidth = windowWidth;
+    }
+
+    /**
+     * Gets window pos x.
+     *
+     * @return the window pos x
+     */
+    public double getWindowPosX() {
+        return Double.parseDouble(windowPosX);
+    }
+
+    /**
+     * Sets window pos x.
+     *
+     * @param windowPosX the window pos x
+     */
+    public void setWindowPosX(double windowPosX) {
+        this.windowPosX = String.valueOf(windowPosX);
+    }
+
+    /**
+     * Gets window pos y.
+     *
+     * @return the window pos y
+     */
+    public double getWindowPosY() {
+        return Double.parseDouble(windowPosY);
+    }
+
+    /**
+     * Sets window pos y.
+     *
+     * @param windowPosY the window pos y
+     */
+    public void setWindowPosY(double windowPosY) {
+        this.windowPosY = String.valueOf(windowPosY);
     }
 }

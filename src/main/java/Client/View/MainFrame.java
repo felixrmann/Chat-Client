@@ -11,14 +11,18 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
+ * The type Main frame.
+ *
  * @author Felix Mann
  * @version 1.0
- * @since 2021-Februar-27
+ * @since 2021 -Februar-27
  */
-
 public class MainFrame extends Application {
 
     Stage window;
+    /**
+     * The Main scene.
+     */
     Scene mainScene;
 
     /**
@@ -41,7 +45,7 @@ public class MainFrame extends Application {
     /**
      * init method
      *
-     * @param primaryStage
+     * @param primaryStage the primary stage
      */
     public void init(Stage primaryStage) {
         window = primaryStage;
@@ -63,16 +67,16 @@ public class MainFrame extends Application {
     /**
      * updates the scene
      *
-     * @param borderPane
-     * @param width
-     * @param height
+     * @param borderPane the border pane
+     * @param width      the width
+     * @param height     the height
      */
-    public void setNewScene(BorderPane borderPane, double width, double height) {
+    public void setNewScene(BorderPane borderPane, double width, double height, boolean centerScreen) {
         Scene scene = new Scene(borderPane, width, height);
         Util.loadStylesheet(scene);
         mainScene = scene;
         window.setScene(scene);
-        window.centerOnScreen();
+        if (centerScreen) window.centerOnScreen();
     }
 
     /**
@@ -85,6 +89,8 @@ public class MainFrame extends Application {
             Config exitConfig = ConfigLoader.loadConfig();
             exitConfig.setWindowHeight((int) window.getHeight());
             exitConfig.setWindowWidth((int) window.getWidth());
+            exitConfig.setWindowPosY(window.getY());
+            exitConfig.setWindowPosX(window.getX());
             ConfigLoader.saveConfig(exitConfig);
             System.exit(0);
         }
@@ -102,8 +108,8 @@ public class MainFrame extends Application {
     /**
      * updates the size of the scene
      *
-     * @param width
-     * @param height
+     * @param width  the width
+     * @param height the height
      */
     public void setSceneSize(double width, double height) {
         window.setScene(new Scene(window.getScene().getRoot(), width, height));
@@ -112,7 +118,7 @@ public class MainFrame extends Application {
     /**
      * toggles the resizability of the window
      *
-     * @param resizable
+     * @param resizable the resizable
      */
     public void setResizable(boolean resizable) {
         window.setResizable(resizable);
@@ -128,8 +134,8 @@ public class MainFrame extends Application {
     /**
      * sets the height and width of the window
      *
-     * @param width
-     * @param height
+     * @param width  the width
+     * @param height the height
      */
     public void setWindowSize(double width, double height){
         window.setWidth(width);
@@ -139,8 +145,8 @@ public class MainFrame extends Application {
     /**
      * sets minimum height and with of window
      *
-     * @param height
-     * @param width
+     * @param width  the width
+     * @param height the height
      */
     public void setMinSize(double width, double height) {
         window.setMinWidth(width);
@@ -150,7 +156,7 @@ public class MainFrame extends Application {
     /**
      * sets Name of window
      *
-     * @param stageName
+     * @param stageName the stage name
      */
     public void setStageName(String stageName) {
         window.setTitle(stageName);
@@ -159,9 +165,21 @@ public class MainFrame extends Application {
     /**
      * returns window
      *
-     * @return window
+     * @return window window
      */
     public Stage getWindow() {
         return window;
+    }
+
+
+    /**
+     * Set window position.
+     *
+     * @param yPosition the y position
+     * @param xPosition the x position
+     */
+    public void setWindowPosition(double yPosition, double xPosition){
+        window.setY(yPosition);
+        window.setX(xPosition);
     }
 }

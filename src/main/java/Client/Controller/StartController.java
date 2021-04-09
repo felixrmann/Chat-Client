@@ -33,15 +33,15 @@ public class StartController {
             if (response.code() == 200) {
                 Config config = ConfigLoader.loadConfig();
                 if (config.getWindowHeight() != 0 && config.getWindowWidth() != 0){
-                    mainFrame.setNewScene(new ChatView(mainFrame), config.getWindowWidth(), config.getWindowHeight());
+                    mainFrame.setNewScene(new ChatView(mainFrame), config.getWindowWidth(), config.getWindowHeight(), false);
                 } else {
-                    mainFrame.setNewScene(new ChatView(mainFrame), 1000, 750);
+                    mainFrame.setNewScene(new ChatView(mainFrame), 1000, 750, true);
                 }
             } else {
-                mainFrame.setNewScene(new LoginView(mainFrame), 720, 400);
+                mainFrame.setNewScene(new LoginView(mainFrame), 720, 400, true);
             }
         } else {
-            mainFrame.setNewScene(new LoginView(mainFrame), 720, 400);
+            mainFrame.setNewScene(new LoginView(mainFrame), 720, 400, true);
         }
     }
 

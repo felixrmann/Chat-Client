@@ -1,6 +1,8 @@
 {
   "mode": "dark",
   "baseURL": "https://chat.mahler.link/api/v1/",
-  "windowHeight": "1333",
-  "windowWidth": "1030"
+  "windowPosX": "8.0",
+  "windowHeight": "1412",
+  "windowPosY": "11.0",
+  "windowWidth": "1137"
 }

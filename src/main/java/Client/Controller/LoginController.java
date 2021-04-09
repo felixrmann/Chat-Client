@@ -54,7 +54,7 @@ public class LoginController implements EventHandler<ActionEvent> {
         if (buttons.get(0).equals(event.getSource())){
             handleButton1();
         } else if (buttons.get(1).equals(event.getSource())){
-            mainFrame.setNewScene(new RegisterView(mainFrame), 400, 450);
+            mainFrame.setNewScene(new RegisterView(mainFrame), 400, 450, true);
         } else if (buttons.get(1).equals(event.getSource())){
             //TODO open password reset window (not in version 1)
         }
@@ -74,7 +74,7 @@ public class LoginController implements EventHandler<ActionEvent> {
                         try {
                             UserLoader userLoader = new UserLoader();
                             userLoader.saveUser(Util.extractToken(response.body().string()));
-                            mainFrame.setNewScene(new ChatView(mainFrame), 800, 800);
+                            mainFrame.setNewScene(new ChatView(mainFrame), 800, 800, true);
                             loginView.setErrorMsgLabel("");
                         } catch (IOException e) {
                             e.printStackTrace();
