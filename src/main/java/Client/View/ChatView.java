@@ -24,6 +24,9 @@ import javafx.scene.text.Font;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -188,6 +191,10 @@ public class ChatView extends BorderPane {
                 e.printStackTrace();
             }
 
+            chatNameLabel.setFont(new Font("Arial", 15));
+            chatNameLabel.setPadding(new Insets(5,0,7,0));
+
+            lastMsgLabel.setFont(new Font("Arial", 12));
 
             borderPane.setLeft(chatImgLabel);
             borderPane.setCenter(centerPane);
@@ -210,10 +217,10 @@ public class ChatView extends BorderPane {
                     chatNameLabel.setText(chat.getChatName());
                     if (!chat.getLastMessage().getMessageContent().equals("")){
                         lastMsgLabel.setText(chat.getLastMessage().getMessageContent());
-                        lastMsgDateLabel.setText(chat.getLastMessage().getMessageCreationDate());
+                        lastMsgDateLabel.setText(ChatView.dateLogic(chat));
                     } else {
-                        lastMsgLabel.setText("last message");
-                        lastMsgDateLabel.setText("last date");
+                        lastMsgLabel.setText("no messages");
+                        lastMsgDateLabel.setText("");
                     }
                 }
                 setGraphic(borderPane);
@@ -240,8 +247,35 @@ public class ChatView extends BorderPane {
         listBorderPane.setCenter(listView);
     }
 
+    /**
+     * updates the chat list
+     */
     public void updateChatList(){
         allChats = null;
         initListView(ChatUtil.loadAllChats());
+    }
+
+    /**
+     * logic for the chat
+     * @return date for chat
+     */
+    private static String dateLogic(Chat chat){
+        String outString = "";
+
+        Calendar lastWeek = Calendar.getInstance();
+        lastWeek.setTime(new Date());
+        lastWeek.add(Calendar.WEEK_OF_YEAR, - 7);
+
+        Calendar messageDate = Calendar.getInstance();
+        messageDate.setTimeInMillis(Long.parseLong(chat.getLastMessage().getMessageCreationDate()));
+
+        if ((lastWeek.get(Calendar.YEAR) == messageDate.get(Calendar.YEAR)) && (lastWeek.get(Calendar.DAY_OF_YEAR) <= messageDate.get(Calendar.DAY_OF_YEAR))){
+            String dayOfWeek = new SimpleDateFormat("EEEE").format(messageDate.get(Calendar.DAY_OF_WEEK));
+            outString = dayOfWeek + "    " + messageDate.get(Calendar.HOUR_OF_DAY) + ":" + messageDate.get(Calendar.MINUTE);
+        } else {
+            outString = messageDate.get(Calendar.DAY_OF_MONTH) + " / " + messageDate.get(Calendar.MONTH) + " / " + messageDate.get(Calendar.YEAR);
+        }
+
+        return outString;
     }
 }
