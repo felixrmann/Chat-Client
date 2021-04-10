@@ -74,7 +74,7 @@ public class RegisterController implements EventHandler<ActionEvent> {
                             try {
                                 UserLoader userLoader = new UserLoader();
                                 userLoader.saveUser(Util.extractToken(Objects.requireNonNull(response.body()).string()));
-                                mainFrame.setNewScene(new ChatView(mainFrame), 800, 800, true);
+                                mainFrame.setNewScene(new ChatView(mainFrame, null), 800, 800, true);
                                 registerView.setErrorMsgLabel("");
                             } catch (IOException e) {
                                 e.printStackTrace();

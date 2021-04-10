@@ -62,4 +62,39 @@ public class ChatUtil {
         }
         return null;
     }
+
+    /**
+     * Load all chats vector.
+     *
+     * @return the vector
+     */
+    public static Vector<Chat> loadAllChats(String responseString){
+        try {
+            Vector<Chat> allChats = new Vector<>();
+
+            JSONObject jsonObject = new JSONObject(responseString);
+
+            JSONArray array = jsonObject.getJSONArray("chats");
+
+            for (int i = 0; i < array.length(); i++) {
+                User author = null;
+
+                JSONObject chatObj = array.getJSONObject(i);
+                JSONObject messageObj = chatObj.getJSONObject("message");
+
+                if (messageObj.has("author")){
+                    JSONObject authorObj = messageObj.getJSONObject("author");
+                    author = new User(authorObj.optString("id"), authorObj.optString("username"), authorObj.optString("avatar"));
+                }
+
+                Message lastMessage = new Message(messageObj.optString("id"), messageObj.optString("content"), messageObj.optString("date"), author);
+                allChats.add(new Chat(chatObj.optString("id"), chatObj.optString("name"), chatObj.optInt("type"), chatObj.optString("imagePath"), lastMessage));
+            }
+
+            return allChats;
+        } catch (JSONException e) {
+            LOGGER.error("Error occurred in ChatUtil, loadAllChats ", e);
+        }
+        return null;
+    }
 }

@@ -46,8 +46,9 @@ public class ChatView extends BorderPane {
     private Vector<Button> buttons;
     private Vector<Chat> allChats;
 
-    public ChatView(MainFrame mainFrame){
+    public ChatView(MainFrame mainFrame, Vector<Chat> allChats){
         this.mainFrame = mainFrame;
+        this.allChats = allChats;
 
         init();
 
@@ -69,12 +70,15 @@ public class ChatView extends BorderPane {
         }
         mainFrame.setMinSize(700, 500);
 
+        if (allChats == null){
+            allChats = ChatUtil.loadAllChats();
+        }
+
         mainGridPane = new GridPane();
         listBorderPane = new BorderPane();
         listView = new ListView<>();
         addChatButton = new Button();
         settingsButton = new Button();
-        allChats = ChatUtil.loadAllChats();
         buttons = new Vector<>();
         chatController = new ChatController(mainFrame, this, buttons);
 
@@ -224,6 +228,7 @@ public class ChatView extends BorderPane {
             //TODO handle if user has no chats (direct user to creation of chat)
             listView.getSelectionModel().select(0);
             listView.setOnMouseClicked(mouseEvent -> {
+                //TODO load chat
                 System.out.println(allChatList.get(listView.getSelectionModel().getSelectedIndex()).getChatName());
             });
             listView.setCellFactory(chatListView -> new ChatCell());
