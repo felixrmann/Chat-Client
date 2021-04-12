@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -44,6 +45,7 @@ public class ChatView extends BorderPane {
     private GridPane mainGridPane;
     private BorderPane listBorderPane;
     private ListView<Chat> listView;
+    private TextArea textInputArea;
     private Button addChatButton, settingsButton;
     private int screenWidth, screenHeight;
     private Vector<Button> buttons;
@@ -80,6 +82,7 @@ public class ChatView extends BorderPane {
         mainGridPane = new GridPane();
         listBorderPane = new BorderPane();
         listView = new ListView<>();
+        textInputArea = new TextArea();
         addChatButton = new Button();
         settingsButton = new Button();
         buttons = new Vector<>();
@@ -100,6 +103,7 @@ public class ChatView extends BorderPane {
         mainGridPane.setPadding(new Insets(10,10,10,10));
         mainGridPane.requestFocus();
         mainGridPane.add(chatListView(), 0,0);
+        mainGridPane.add(createChatPane(), 1,0);
     }
 
     private BorderPane chatListView(){
@@ -159,8 +163,29 @@ public class ChatView extends BorderPane {
         botBorderPane.setRight(botButtonGridPane);
 
         listBorderPane.setBottom(botBorderPane);
+        listBorderPane.setMinWidth(350);
+        listBorderPane.prefHeightProperty().bind(mainFrame.getStage().heightProperty());
+        listBorderPane.prefWidthProperty().bind(mainFrame.getStage().widthProperty().multiply(0.25));
 
         return listBorderPane;
+    }
+
+    private BorderPane createChatPane(){
+        BorderPane chatPane = new BorderPane();
+
+        BorderPane chatContentPane = new BorderPane();
+        //chatContentPane.prefHeightProperty().bind(Bindings.divide(mainFrame.getStage().heightProperty(), 1));
+        //chatContentPane.prefWidthProperty().bind(Bindings.divide(mainFrame.getStage().widthProperty(), 0.75));
+        chatPane.setCenter(chatContentPane);
+
+        BorderPane textInputPane = new BorderPane();
+        textInputPane.setCenter(textInputArea);
+
+        textInputArea.prefWidthProperty().bind(Bindings.divide(mainFrame.getStage().widthProperty(), 1));
+
+        chatPane.setBottom(textInputPane);
+
+        return chatPane;
     }
 
     private void initScreenSize() {
@@ -239,9 +264,6 @@ public class ChatView extends BorderPane {
                 System.out.println(allChatList.get(listView.getSelectionModel().getSelectedIndex()).getChatName());
             });
             listView.setCellFactory(chatListView -> new ChatCell());
-            listView.prefHeightProperty().bind(Bindings.divide(mainFrame.getStage().heightProperty(), 0.1));
-            listView.prefWidthProperty().bind(Bindings.divide(mainFrame.getStage().widthProperty(), 3));
-            listView.setMaxWidth(400);
         }
 
         listBorderPane.setCenter(listView);
