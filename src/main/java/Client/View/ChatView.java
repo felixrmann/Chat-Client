@@ -13,9 +13,8 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -46,7 +45,7 @@ public class ChatView extends BorderPane {
     private BorderPane listBorderPane;
     private ListView<Chat> listView;
     private TextArea textInputArea;
-    private Button addChatButton, settingsButton;
+    private Button addChatButton, settingsButton, sendButton;
     private int screenWidth, screenHeight;
     private Vector<Button> buttons;
     private Vector<Chat> allChats;
@@ -85,14 +84,17 @@ public class ChatView extends BorderPane {
         textInputArea = new TextArea();
         addChatButton = new Button();
         settingsButton = new Button();
+        sendButton = new Button();
         buttons = new Vector<>();
         chatController = new ChatController(mainFrame, this, buttons);
 
         buttons.add(addChatButton);
         buttons.add(settingsButton);
+        buttons.add(sendButton);
 
         addChatButton.setOnAction(chatController);
         settingsButton.setOnAction(chatController);
+        sendButton.setOnAction(chatController);
 
         initScreenSize();
     }
@@ -172,16 +174,23 @@ public class ChatView extends BorderPane {
 
     private BorderPane createChatPane(){
         BorderPane chatPane = new BorderPane();
+        chatPane.setPadding(new Insets(0,0,0,10));
 
         BorderPane chatContentPane = new BorderPane();
-        //chatContentPane.prefHeightProperty().bind(Bindings.divide(mainFrame.getStage().heightProperty(), 1));
-        //chatContentPane.prefWidthProperty().bind(Bindings.divide(mainFrame.getStage().widthProperty(), 0.75));
         chatPane.setCenter(chatContentPane);
 
         BorderPane textInputPane = new BorderPane();
         textInputPane.setCenter(textInputArea);
+        textInputPane.setRight(sendButton);
 
         textInputArea.prefWidthProperty().bind(Bindings.divide(mainFrame.getStage().widthProperty(), 1));
+        textInputArea.setFont(new Font("Arial", 20));
+        textInputArea.setMaxHeight(200);
+        textInputArea.setWrapText(true);
+        textInputArea.setPromptText("Type your message here");
+        textInputArea.textProperty().addListener((observableValue, oldValue, newValue) -> {
+
+        });
 
         chatPane.setBottom(textInputPane);
 
